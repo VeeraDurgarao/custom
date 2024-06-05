@@ -8,13 +8,13 @@ class BankAccount(models.Model):
 
     name = fields.Char(string="Name", help='Name of the account holder')
     email = fields.Char(string="email")
-    account_number = fields.Char(string="Account Number",required=True)
+    account_number = fields.Char(string="Account Number")
     mobile = fields.Char(string="Mobile", help='Mobile Number of the accountHolder')
     age = fields.Integer(string='Age')
     gender = fields.Selection([('male', 'Male'), ('female', 'Female')], string='Gender')
     Aadhar = fields.Char(String="Aadhar", index=True, help="Aadhar number of the accountHolder")
     account_Type = fields.Selection([('savings', 'Savings'), ('checking', 'Checking')], string='Account Type',
-                                    help="Type of bank account", require=True, default='savings')
+                                    help="Type of bank account", default='savings')
     balance = fields.Float(string='Balance', default=0.0, readonly=True, help='Current balance of the account')
     Date_opened = fields.Date(string="Date Opened", help='Date when thw account opened')
     image = fields.Binary(string='Image',widget="image")
@@ -23,6 +23,22 @@ class BankAccount(models.Model):
     choose_branch = fields.Many2one('button.model', string="Choose Branch")
     branch = fields.Char(string="Code",related="choose_branch.Branch_Code")
     seq = fields.Integer(string="Sequence")
+
+    @api.model
+    def fun(self):
+        account = self.env['bank.transaction'].search([], limit=1)
+        if not account:
+            account = self.env['bank.transaction'].create({})  # Create a new record if not found
+
+        # Write the command tuple to create a new transaction record in the One2many field
+        account.write({'transaction_ids': [(0, 0, {'account_number': '2589631471', 'amount': 100})]})
+    # @api.onchange('choose_branch')
+    # def _onchange_choose_branch(self):
+    #     if self.choose_branch:
+    #         self.location = self.choose_branch.location
+            # self.branch_email = self.choose_branch.email
+            # self.branch_contact = self.choose_branch.Contact
+
 
 
     #

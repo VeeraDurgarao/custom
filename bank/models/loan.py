@@ -11,6 +11,8 @@ class Loan(models.Model):
     duration = fields.Integer(string='Duration (months)', required=True)
     total_interest = fields.Float(string="Total Amount", compute="total_interest1", store=True)
 
+
+
     # account_id = fields.Many2one('bank.account', string="Bank Account")
 
     # bY USING COMPUTE METHOD IT IS AUTOMATICALLY CALCULATE THE TOTAL INTEREST WITH AMOUNT
@@ -25,3 +27,15 @@ class Loan(models.Model):
         res = super(Loan, self).write(vals)
         print("Changed values is>>>>>>>>>>>>>>", vals)
         return res
+
+
+class product(models.Model):
+    _inherit = "product.product"
+
+    practice_id = fields.Many2one('practice.model')
+    name_of_loan = fields.Many2one('product.product',string="Product")
+    amount_practice = fields.Char(string="Description", related="name_of_loan.name")
+    interest_rate_id = fields.Float(string='Price', related="name_of_loan.lst_price")
+    quantity = fields.Float(string='Cost', related="name_of_loan.standard_price", store=True)
+
+

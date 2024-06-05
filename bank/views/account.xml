@@ -5,11 +5,8 @@
             <field name="model">bank.account</field>
             <field name="arch" type="xml">
                 <form string="Account">
-                    <notebook>
-                        <page string="Page 1">
-
-
                     <sheet>
+
                         <group>
                             <group>
                                 <field name="name"/>
@@ -27,14 +24,23 @@
                                 <field name="choose_branch"/>
                                 <field name="seq" invisible="1"/>
 
-
-
-
                             </group>
+                            <notebook>
+
+                                <page string="PAGE">
+                                    <group>
+
+
+                                        <field name="name"/>
+                                        <field name="mobile"/>
+                                    </group>
+                                </page>
+                            </notebook>
                         </group>
+
                     </sheet>
-</page>
-                    </notebook>
+
+
                 </form>
             </field>
         </record>
@@ -47,17 +53,17 @@
                     <field name="seq" widget="handle"/>
                     <field name="name"/>
                     <field name="email"/>
-                     <field name="account_number"/>
+                    <field name="account_number"/>
                     <field name="mobile"/>
                     <field name="age"/>
                     <field name="gender"/>
+                    <field name="choose_branch"/>
                     <field name="Aadhar"/>
                     <field name="account_Type"/>
                     <field name="balance"/>
                     <field name="Date_opened"/>
                     <field name="completed"/>
                     <field name="transaction_ids"/>
-                    <field name="choose_branch"/>
 
 
                 </tree>
@@ -72,7 +78,7 @@
                     <field name="name"
                            filter_domain="['|', '|', '|', ('name', 'ilike', self), ('mobile', 'ilike', self), ('age', 'ilike', self), ('gender', 'ilike', self)]"/>
                     <field name="name"/>
-                     <field name="account_number"/>
+                    <field name="account_number"/>
                     <field name="mobile"/>
                     <field name="age"/>
                     <field name="gender"/>
@@ -98,7 +104,7 @@
             <field name="arch" type="xml">
                 <pivot string="Account">
                     <field name="name"/>
-                     <field name="account_number"/>
+                    <field name="account_number"/>
                     <field name="mobile"/>
                     <field name="age"/>
                     <field name="gender"/>
@@ -109,8 +115,6 @@
                     <field name="completed"/>
                     <field name="transaction_ids"/>
                     <field name="choose_branch"/>
-
-
                 </pivot>
             </field>
         </record>

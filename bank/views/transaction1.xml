@@ -18,6 +18,7 @@
                                 <field string="Transactions" name="listed_property_count" widget="statinfo"/>
                             </button>
                                <button name="generate_excel_report" string="Print Excel" type="object" class="oe_highlight"/>
+                               <button name="practice" string="Print" type="object" class="oe_highlight"/>
                         </div>
                     </header>
                     <header>
@@ -29,12 +30,15 @@
                             <field name="account_number"/>
                             <field name="date"/>
                             <field name="amount"/>
-                            <field name="transaction_type"/>
+                            <field name="currency_id"/>
+                            <field name="transaction_type" />
                             <field name="account_id"/>
                             <field name="partner_id"/>
-                            <field name="name"/>
-                            <field name="email"/>
-                            <field name="mobile"/>
+                            <field name="customer_details" readonly="1" widget="html"/>
+                            <field name="partner_date"/>
+                            <field name="expiration"/>
+                            <field name="payment_term_id"/>
+
                         </group>
                     </sheet>
                 </page>
@@ -47,17 +51,17 @@
             <field name="name">bank.transaction</field>
             <field name="model">bank.transaction</field>
             <field name="arch" type="xml">
-                <tree>
+                <tree decoration-success="transaction_type == 'withdraw'" decoration-warning="transaction_type == 'deposit'" decoration-danger="transaction_type == 'transfer'" >
 
                     <field name="account_number"/>
                     <field name="date"/>
                     <field name="amount"/>
-                    <field name="transaction_type"/>
+                    <field name="transaction_type" decoration-success="transaction_type == 'withdraw'" decoration-warning="transaction_type == 'deposit'" decoration-danger="transaction_type == 'transfer'" widget="badge"/>
                     <field name="account_id"/>
                     <field name="partner_id"/>
-                   <field name="name"/>
-                    <field name="email"/>
-                    <field name="mobile"/>
+<!--                   <field name="name"/>-->
+<!--                    <field name="email"/>-->
+<!--                    <field name="mobile"/>-->
                 </tree>
             </field>
         </record>
@@ -141,4 +145,3 @@
               sequence="5"/>
     </data>
 </odoo>
-

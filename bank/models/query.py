@@ -9,22 +9,22 @@ class QueryBank(models.Model):
     location = fields.Char(string="Location")
     assets = fields.Integer(string='Assets')
     status = fields.Selection([("done", 'Done'), ("draft", "Draft")], string="Status", default="draft")
-
-    def _select(self):
-        return "name, account_number, location, assets, status"
-
-    def _from(self):
-        return "customer_bank"
-
-    def _query(self):
-        return f"""
-            SELECT {self._select()}
-            FROM {self._from()}
-        """
-
-    @property
-    def _table_query(self):
-        return self._query()
+    #
+    # def _select(self):
+    #     return "name"
+    #
+    # def _from(self):
+    #     return "customer_bank"
+    #
+    # def _query(self):
+    #     return f"""
+    #         SELECT {self._select()}
+    #         FROM {self._from()}
+    #     """
+    #
+    # @property
+    # def _table_query(self):
+    #     return self._query()
 
 
 

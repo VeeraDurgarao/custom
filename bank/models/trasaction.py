@@ -3,28 +3,67 @@ import base64
 import io
 from odoo import api, fields, models, _
 from odoo.exceptions import ValidationError
-
+from datetime import date, datetime, timedelta
 
 class BankTransaction(models.Model):
     _name = 'bank.transaction'
     _description = 'Bank Transaction'
 
-    account_number = fields.Char(string="Account Number", required=True)
-    date = fields.Date(string='Date', required=True)
-    amount = fields.Float(string='Amount', required=True)
+    account_number = fields.Char(string="Account Number")
+    date = fields.Date(string='Date')
+    amount = fields.Monetary(string='Amount' )
+    currency_id=fields.Many2one('res.currency')
     transaction_type = fields.Selection([
         ('deposit', 'Deposit'),
         ('withdraw', 'Withdraw'),
         ('transfer', 'Transfer')
-    ], string='Transaction Type', required=True)
+    ], string='Transaction Type')
     account_id = fields.Many2one('bank.account', string='Account')
     partner_id = fields.Many2one('res.partner', string='Partner')
-    email = fields.Char(string="mail")
-    name = fields.Char(string="name")
-    mobile = fields.Char(string="mobile")
+    partner_name = fields.Char(string='Customer Name')
+    partner_date = fields.Datetime(string='Date')
+    expiration = fields.Datetime(string='Expire Date')
+    payment_term_id = fields.Many2one(
+        comodel_name='account.payment.term',
+        string="Payment Terms")
+    customer_details = fields.Html(string=' ', compute='_compute_customer_details')
 
+
+
+    @api.depends('partner_id')
+    def _compute_customer_details(self):
+        for record in self:
+            if record.partner_id:
+                record.customer_details = f"<p>{record.partner_id.name}<br/>{record.partner_id.email}<br/>{record.partner_id.phone}</p>"
+            else:
+                record.customer_details = "<p>No customer selected</p>"
+
+    @api.onchange('partner_id')
+    def _onchange_partner_id(self):
+        if self.partner_id:
+            self.partner_date = datetime.today()
+            self.expiration = datetime.today() + timedelta(days=7)
+
+        else:
+            self.partner_name = False
+            # self.partner_email = False
+            self.payment_term_id = False
     listed_property_count = fields.Integer(string='Listed Property Count', compute='_compute_listed_property_count')
 
+
+
+    def practice(self):
+        res = self.env['bank.loan'].search([])
+        L = []
+        for i in res:
+            res = i.name
+            L += res
+        print(L)
+        return L
+    def search(self):
+        res = self.search([])
+        print(res)
+        return res
     # status = fields.Selection([('active', "Active"), ('resign', "Resign")], string="status", readonly=True,
     #                           default='active')
     def _get_customer_information(self):
@@ -96,6 +135,7 @@ class BankTransaction(models.Model):
             rec.transaction_type = 'withdraw'
 
     def action_property_list(self):
+
         return {
             'type': 'ir.actions.act_window',
             'name': 'Transaction LIST',

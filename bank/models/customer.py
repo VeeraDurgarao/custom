@@ -16,6 +16,8 @@ class BankCustomer(models.Model):
     image = fields.Binary(string='Image')
     status = fields.Selection([("done", 'Done'), ("draft", "Draft")], string="Status", default="draft")
 
+
+    name2=fields.Many2one("bank.account",string="Name")
     @api.model
     def process_new_customers(self):
         """ Method to process new customer details """
@@ -44,37 +46,16 @@ class BankCustomer(models.Model):
         print("Create the values>>>>>>>>>>>", vals)
         return res
 
-    # @api.model
-    # def create(self, vals):
-    #     # Get the database cursor
-    #     cr = self.env.cr
-    #
-    #     # Get the table name for the model
-    #     table_name = self._table
-    #
-    #     # Prepare the SQL INSERT statement
-    #     columns = ', '.join(vals.keys())
-    #     values = ', '.join(['%s'] * len(vals))
-    #     insert_query = f"INSERT INTO {table_name} ({columns}) VALUES ({values}) RETURNING id"
-    #
-    #     # Execute the SQL INSERT statement
-    #     cr.execute(insert_query, list(vals.values()))
-    #
-    #     # Fetch the ID of the newly created record
-    #     new_id = cr.fetchone()[0]
-    #
-    #     # Log the creation process
-    #     print("Create the values SQL:", vals)
-    #
-    #     # Fetch the newly created record using the ORM to return it properly
-    #     res = self.browse(new_id)
-    #     return res
 
     #
     #     # ORM write method
-    #
-    #     def write(self,vals):
-    #         res = super(BankCustomer,self).write(vals)
+
+    def write(self,vals):
+        res = super(BankCustomer,self).write(vals)
+        res1 = self.search([])
+        print(res1)
+        print("write method>>>>>",res)
+        return res
     #         res1 = self.search([('name', '=', self.name)])
     #         res2 = self.search_count([('name', '=', self.name)])
     #         names_in_uppercase = res1.mapped(lambda rec: rec.name.upper())
@@ -86,10 +67,10 @@ class BankCustomer(models.Model):
     #
     #
     # # ORM UNLINK/DELETE METHOD
-    #     def unlink(self):
-    #         for record in self:
-    #             print("Deleted item is:", record.name)
-    #         return super(BankCustomer, self).unlink()
+    # def unlink(self):
+    #     for record in self:
+    #         print("Deleted item is:", record.name)
+    #     return super(BankCustomer, self).unlink()
     #
     #
     # # ORM Read method
@@ -107,13 +88,15 @@ class BankCustomer(models.Model):
         #     raise ValidationError("You cannot delete odoo domain")
         self.ensure_one()
         res = super(BankCustomer, self).unlink()
+        print(res)
         return res
 
     #     # ORM COPY METHOD
 
     def copy(self, default=None):
         self.ensure_one()
-        if self.status == 'done':
-            raise ValidationError("You cannot duplicate the record")
+        # if self.status == 'done':
+        #     raise ValidationError("You cannot duplicate the record")
         res = super().copy(default)
+        print(res)
         return res

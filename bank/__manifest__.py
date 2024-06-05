@@ -2,7 +2,7 @@
     'name': 'Bank Management',
     'version': '1.0',
     'summary': 'Bank Management System',
-    'depends': ['base', 'mail', 'sale', 'stock'],
+    'depends': ['base', 'mail', 'sale', 'stock', 'planning', 'web','hr_expense'],
     'data': ['security/ir.model.access.csv',
              'security/recycle_account_groups.xml',
              # 'security/recycle_account_record_rules.xml',
@@ -14,7 +14,7 @@
              'wizard/demo.xml',
              'wizard/print.xml',
              'wizard/xlReport.xml',
-             # 'reports/bank.template.xml',
+             'reports/bank.template.xml',
              'reports/sale.commision-qweb.xml',
              'reports/customerPDF.xml',
              'views/customer.xml',
@@ -28,12 +28,27 @@
              'views/branch.xml',
              'views/kanbana.xml',
              'views/recycle.xml',
-            'views/sale_order_commission_view.xml',
-'views/sale_line_oreder_commission.xml',
-             'views/sale_inheritate_menu.xml'
+             'views/sale_order_commission_view.xml',
+             'views/sale_line_oreder_commission.xml',
+             'views/sale_inheritate_menu.xml',
+             'views/practice.xml',
+             ],
+    'assets': {
+        'web.assets_backend': [
+            'bank/static/src/view/js/planning_button.js',
+            'bank/static/src/view/js/practice.js',
+            'bank/static/src/view/js/expense_button.js',
+            'bank/static/src/view/js/first.js',
+            'bank/static/src/view/js/second.js',
+            'bank/static/src/view/xml/temp.xml',
+            'bank/static/src/view/xml/expense_button.xml',
+            'bank/static/src/view/xml/dummy.xml',
+        ]
+    },
 
-
-
-             ]
+    'installable': True,
+    'auto_install': False,
+    'application': True,
+    'license': 'LGPL-3',
 
 }

@@ -14,6 +14,8 @@ class BankEmployee(models.Model):
 
 
 
+
+
     # ORM METHODS WRITE,SEARCH,BROWSE
     @api.model
     def write(self, vals):

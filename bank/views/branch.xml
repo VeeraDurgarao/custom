@@ -6,7 +6,8 @@
             <field name="arch" type="xml">
                 <form string="customer">
                     <header>
-                        <!--                        <button string="Search" class="oe_highlight" type="object" name="check_orm" data-hotkey="q"/>-->
+
+
                         <button string="SearchRead" class="oe_highlight" type="object" name="searchRead" data-hotkey="q"/>
                         <button string="readGroup" class="oe_highlight" type="object" name="readGroup" data-hotkey="q"/>
                         <button string="filter" class="oe_highlight" type="object" name="filter" data-hotkey="q"/>

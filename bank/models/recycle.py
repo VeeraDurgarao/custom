@@ -3,14 +3,30 @@ from odoo.exceptions import ValidationError
 
 class BankRecycleAccount(models.Model):
     _name = "recycle.account"
-    _inherit = 'bank.account'
+    _inherit = 'bank.account','mail.thread'
     _description = "New bankAccount"
+
+    help = fields.Char(string="Help", help="what you want")
+    Report_issue = fields.Text(string="Report", help="what is your problem")
 
     # Retrieve information about the 'name' and 'description' fields of the 'product.product' model
 
 
     seq_no = fields.Text(string="Ref No", required=True, readonly=True, default=lambda self: _('NEW'))
 
+    def check_orm(self):
+        recordss = self.search([('account_Type', '=', 'savings')])
+        print("id", recordss)
+
+    @api.model
+    def read_records_sql(self, *args, **kwargs):
+        pass
+        # self.env.cr.execute("""
+        #         SELECT name FROM recycle_account WHERE account_Type = 'savings'
+        #     """)
+        # results = self.env.cr.fetchall()
+        # for row in results:
+        #     print(row[0])
 
     # @api.model
     # def create(self, vals):
@@ -80,6 +96,7 @@ class StockMoveNew(models.Model):
 
 
     def action_confirm(self):
+
         for order in self:
             for line in order.order_line:
                 if line.product_uom_qty <= 0:
@@ -129,3 +146,10 @@ class StockMovePickingNew(models.Model):
     _inherit = 'stock.move'
     extra = fields.Integer(string="Extra Tax")
 related='sale_line_id.extra',
+
+class new(models.Model):
+    _inherit = "sale.order.line"
+
+    _sql_constraints = [
+        ('order_product_unique', 'unique(order_id, product_id)', 'The product must be unique per sale order.')
+    ]

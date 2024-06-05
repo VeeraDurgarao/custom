@@ -17,7 +17,9 @@ class Button(models.Model):
         ('inactive', 'Inactive'),
     ], string="Status")
     # signature = fields.Binary(string='Signature')
-    ref_no = fields.Text(string="Ref No", required=True, readonly=True, default=lambda self: _('NEW'))
+    ref_no = fields.Text(string="Ref No", readonly=True, default=lambda self: _('NEW'))
+
+
 
 
     # ORM CREATE METHOD
@@ -35,13 +37,17 @@ class Button(models.Model):
             args += ['|', '|', ('name', operator, name), ('email', operator, name), ('location', operator, name)]
         return self._search(args, limit=limit, access_rights_uid=name_get_uid)
 
+    @api.model
     def name_get(self):
-        result = []
-        for rec in self:
-            # Customize the display name as needed
-            name = f"{rec.name} ({rec.custom_field})"
-            result.append((rec.id, name))
-        return result
+       return list(zip(self._ids, self.mapped('name')))
+
+    # def name_get(self):
+    #     result = []
+    #     for rec in self:
+    #         # Customize the display name as needed
+    #         name = f"{rec.name} ({rec.custom_field})"
+    #         result.append((rec.id, name))
+    #     return result
 
     def searchRead(self):
         records_search = self.search_read([('status', '=', 'active')], ['name'])
@@ -49,6 +55,7 @@ class Button(models.Model):
 
     def filter(self):
         values = self.search([])
+        print(values)
         values2 = self.search([('status', '=', 'active')])
         values3 = self.browse([values])
         print("VALUES IS>>>>>>>>>>>>>>", values)
@@ -73,9 +80,7 @@ class Button(models.Model):
         # for group in data:
         #     print("Read group>>>>>>>>>>>>", group)
 
-    # def check_orm(self):
-    #     recordss = self.search([])
-    #     print("id",recordss)
+
     #
     #     print("Search values in the list:  ")
     #     value = [i.name for i in recordss]

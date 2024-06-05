@@ -7,14 +7,18 @@
                 <form string="customer">
                     <sheet>
                         <group>
-                            <field name="name"/>
-                            <field name="account_number"/>
-                            <field name="location"/>
-                            <field name="assets"/>
-                            <field name="Loans_List"/>
-                            <field name="status"/>
-                            <field name="dob"/>
-
+                            <group>
+                                <field name="name2"/>
+                                <field name="name"/>
+                                <field name="account_number"/>
+                                <field name="location"/>
+                            </group>
+                            <group>
+                                <field name="assets"/>
+                                <field name="Loans_List"/>
+                                <field name="status"/>
+                                <field name="dob"/>
+                            </group>
                         </group>
                     </sheet>
                 </form>
@@ -28,12 +32,13 @@
             <field name="arch" type="xml">
                 <tree string="customer">
                     <field name="name"/>
+                    <field name="name2"/>
                     <field name="account_number"/>
                     <field name="location"/>
                     <field name="assets"/>
                     <field name="Loans_List" widget="many2many_tags"/>
                     <field name="status"/>
-                     <field name="dob"/>
+                    <field name="dob"/>
                 </tree>
             </field>
         </record>
@@ -45,12 +50,13 @@
             <field name="arch" type="xml">
                 <pivot>
                     <field name="name"/>
+                    <field name="name2"/>
                     <field name="account_number"/>
                     <field name="location"/>
                     <field name="assets"/>
                     <field name="Loans_List"/>
                     <field name="status"/>
-                     <field name="dob"/>
+                    <field name="dob"/>
                 </pivot>
             </field>
         </record>

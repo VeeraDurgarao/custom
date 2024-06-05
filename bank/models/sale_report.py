@@ -128,3 +128,25 @@ class reportMonthly(models.Model):
             'target': 'self',
         }
 
+    query_fet = (
+        "SELECT "
+        "so.partner_id, "
+        "rp.name AS partner_name, "
+        "COUNT(so.id) AS order_count, "
+        "SUM(so.amount_untaxed) AS total_amount_untaxed, "
+        "SUM(so.amount_tax) AS total_amount_tax, "
+        "SUM(so.amount_total) AS total_amount_total, "
+        "SUM(so.amount_to_invoice) AS total_amount_to_invoice "
+        "FROM sale_order so "
+        "JOIN res_partner rp ON so.partner_id = rp.id "
+        "WHERE so.date_order BETWEEN %s AND %s "
+        "GROUP BY so.partner_id, rp.name"
+    )
+
+    # params = (self.start_date.strftime('%Y-%m-%d'), self.end_date.strftime('%Y-%m-%d'))
+    # self.env.cr.execute(query_fet, params)
+    # result_data = self.env.cr.fetchall()
+
+
+
+

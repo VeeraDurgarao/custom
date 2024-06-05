@@ -6,7 +6,13 @@
             <field name="arch" type="xml">
                 <form string="Recycle">
                     <header>
-                        <button name="%(bank.demo_demo_action_id)d" type="action" string="Help" class="btn-primary"/>
+                        <button name="%(bank.demo_demo_action_id)d" type="action" string="Help" class="btn-primary"
+                                groups="bank.group_gov_record_access"/>
+                    </header>
+                    <header>
+                        <button string="Search" class="oe_highlight" type="object" name="check_orm"/>
+
+                        <button string="sql" class="oe_highlight" type="object" name="read_records_sql"/>
                     </header>
 
                     <div class="oe_title">
@@ -19,8 +25,8 @@
                             <group>
 
                                 <field name="name"/>
-                                    <field name="email"/>
-                                 <field name="account_number"/>
+                                <field name="email"/>
+                                <field name="account_number"/>
                                 <field name="mobile"/>
                                 <field name="age"/>
                                 <field name="gender"/>
@@ -30,9 +36,27 @@
                                 <field name="Date_opened"/>
                                 <field name="transaction_ids"/>
                                 <field name="choose_branch"/>
+                                <field name="help"/>
+                                <field name="Report_issue"/>
                             </group>
+                            <notebook>
+
+                                <page string="PAGE">
+                                    <group>
+
+
+                                        <field name="name"/>
+                                        <field name="mobile"/>
+                                    </group>
+                                </page>
+                            </notebook>
                         </group>
+
                     </sheet>
+                    <div class="oe_chatter ">
+                        <field name="message_follower_ids" groups="bank.group_gov_record_access"/>
+                        <field name="message_ids" groups="bank.group_gov_record_access"/>
+                    </div>
                 </form>
             </field>
         </record>
@@ -42,10 +66,10 @@
             <field name="model">recycle.account</field>
             <field name="arch" type="xml">
                 <tree string="Recycle">
-                      <field name="seq_no"/>
+                    <field name="seq_no"/>
                     <field name="name"/>
-                        <field name="email"/>
-                     <field name="account_number"/>
+                    <field name="email"/>
+                    <field name="account_number"/>
                     <field name="mobile"/>
                     <field name="age"/>
                     <field name="gender"/>
@@ -54,6 +78,8 @@
                     <field name="balance"/>
                     <field name="Date_opened"/>
                     <field name="transaction_ids"/>
+                    <field name="help"/>
+                    <field name="Report_issue"/>
                 </tree>
             </field>
         </record>
@@ -81,17 +107,17 @@
             </field>
         </record>
 
-<!--        <record id="_sale_order_line_form_view" model="ir.ui.view">-->
-<!--            <field name="name">sale.order.line.form.view</field>-->
-<!--            <field name="model">sale.order</field>-->
-<!--            <field name="inherit_id" ref="sale.view_order_form"/>-->
-<!--            <field name="arch" type="xml">-->
-<!--                <xpath expr="//notebook/page[@name='order_lines']/field[@name='order_line']/tree/field[@name='tax_id']"-->
-<!--                       position="after">-->
-<!--                    <field name="extra"/>-->
-<!--                </xpath>-->
-<!--            </field>-->
-<!--        </record>-->
+        <!--        <record id="_sale_order_line_form_view" model="ir.ui.view">-->
+        <!--            <field name="name">sale.order.line.form.view</field>-->
+        <!--            <field name="model">sale.order</field>-->
+        <!--            <field name="inherit_id" ref="sale.view_order_form"/>-->
+        <!--            <field name="arch" type="xml">-->
+        <!--                <xpath expr="//notebook/page[@name='order_lines']/field[@name='order_line']/tree/field[@name='tax_id']"-->
+        <!--                       position="after">-->
+        <!--                    <field name="extra"/>-->
+        <!--                </xpath>-->
+        <!--            </field>-->
+        <!--        </record>-->
 
         <record id="_stock_move_form_view" model="ir.ui.view">
             <field name="name">stock.move.form.view</field>
@@ -106,26 +132,28 @@
         </record>
 
         <record id="sale_order_new_inherit_id" model="ir.ui.view">
-        <field name="name">sale.order.inherit.id</field>
-        <field name="model">sale.order</field>
-        <field name="inherit_id" ref="sale.view_order_form"/>
-        <field name="arch" type="xml">
-            <xpath expr="//button[@name='action_cancel']" position="after">
-               <button name="%(bank.print_wizard_action_id)d" type="action" string="print" context="{'default_order_id': id}"  class="btn-primary"/>
-            </xpath>
-        </field>
-    </record>
+            <field name="name">sale.order.inherit.id</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//button[@name='action_cancel']" position="after">
+                    <button name="%(bank.print_wizard_action_id)d" type="action" string="print"
+                            context="{'default_order_id': id}" class="btn-primary"/>
+                </xpath>
+            </field>
+        </record>
 
-<template id="sale_order_inherit_report" inherit_id="sale.report_saleorder_document">
-    <xpath expr="//div[@class='page']" position="before">
-        <div>
-                <div id="inherit_div_id">
-                    <strong>Custom Name: <t t-esc="doc.custom_name"/></strong>
+        <template id="sale_order_inherit_report" inherit_id="sale.report_saleorder_document">
+            <xpath expr="//div[@class='page']" position="before">
+                <div>
+                    <div id="inherit_div_id">
+                        <strong>Custom Name:
+                            <t t-esc="doc.custom_name"/>
+                        </strong>
+                    </div>
                 </div>
-        </div>
-    </xpath>
-</template>
-
+            </xpath>
+        </template>
 
 
         <record id="recycle_account_action_id" model="ir.actions.act_window">
@@ -135,10 +163,10 @@
             <field name="view_mode">tree,form</field>
         </record>
         <menuitem id="menu_recycle_account_master"
-              name="Recycle List"
-              parent="menu_bank_root"
-              action="recycle_account_action_id"
-              sequence="9"/>
+                  name="Recycle List"
+                  parent="menu_bank_root"
+                  action="recycle_account_action_id"
+                  sequence="9"/>
 
     </data>
 </odoo>

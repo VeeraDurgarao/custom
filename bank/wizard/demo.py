@@ -8,4 +8,10 @@ class Demo(models.TransientModel):
     Report_issue = fields.Text(string="Report", help="what is your problem")
 
     def submit(self):
-        pass
+        temp = self.env.context.get('active_id')
+        print(temp)
+        temp1 = self.env['recycle.account'].browse(temp)
+        temp1.write({
+            'help':self.help,
+            'Report_issue':self.Report_issue
+        })
