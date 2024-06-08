@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="project.ListButtons" t-inherit="web.ListView.Buttons" t-inherit-mode="primary">
+
+       <!-- hr.expense and hr.expense.sheet -->
+        <xpath expr="//div[hasclass('o_list_buttons')]" position="inside">
+            <input type="file" name="ufile" class="d-none" t-ref="fileInput" multiple="1" accept="*" t-on-change="onChangeFileInput"/>
+            <button type="button" class="d-none d-md-inline o_button_upload_expense btn btn-primary me-1" >
+                Scan
+            </button>
+        </xpath>
+  </t>
+
+</templates>

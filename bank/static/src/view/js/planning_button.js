@@ -3,7 +3,7 @@ import { FormController } from "@web/views/form/form_controller";
 import { formView } from "@web/views/form/form_view";
 import { registry } from "@web/core/registry";
 
-class jsClassModelInfo extends FormController {
+class jsClassModelInfos extends FormController {
     actionInfoForm() {
                 alert("HI")
                 let a = [11,12,13,15,16]
@@ -14,11 +14,11 @@ class jsClassModelInfo extends FormController {
                 console.log("HI hello")
     }
 }
-jsClassModelInfo.template = "bank.modelInfoBtn";
+jsClassModelInfos.template = "bank.modelInfoBtn";
 
 export const modelInfoView = {
     ...formView,
-    Controller: jsClassModelInfo,
+    Controller: jsClassModelInfos,
 };
 registry.category("views").add("model_info", modelInfoView);
 

@@ -19,7 +19,7 @@
                         <group>
                         <group>
                             <field name="customer"/>
-                              <field name="customer_details"/>
+                            <field name="customer_details"/>
                             <field name="partner_name"/>
                             <field name="quotation_template"/>
                         </group>

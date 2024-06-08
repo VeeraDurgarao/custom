@@ -11,12 +11,11 @@ class BankRecycleAccount(models.Model):
 
     # Retrieve information about the 'name' and 'description' fields of the 'product.product' model
 
-
     seq_no = fields.Text(string="Ref No", required=True, readonly=True, default=lambda self: _('NEW'))
 
     def check_orm(self):
         recordss = self.search([('account_Type', '=', 'savings')])
-        print("id", recordss)
+        print("id1", recordss)
 
     @api.model
     def read_records_sql(self, *args, **kwargs):

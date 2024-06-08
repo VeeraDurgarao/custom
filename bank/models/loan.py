@@ -33,7 +33,7 @@ class product(models.Model):
     _inherit = "product.product"
 
     practice_id = fields.Many2one('practice.model')
-    name_of_loan = fields.Many2one('product.product',string="Product")
+    name_of_loan = fields.Many2one('product.product',string="Product",store=True)
     amount_practice = fields.Char(string="Description", related="name_of_loan.name")
     interest_rate_id = fields.Float(string='Price', related="name_of_loan.lst_price")
     quantity = fields.Float(string='Cost', related="name_of_loan.standard_price", store=True)

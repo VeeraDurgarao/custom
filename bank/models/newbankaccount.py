@@ -12,7 +12,7 @@ class BankAccount(models.Model):
     mobile = fields.Char(string="Mobile", help='Mobile Number of the accountHolder')
     age = fields.Integer(string='Age')
     gender = fields.Selection([('male', 'Male'), ('female', 'Female')], string='Gender')
-    Aadhar = fields.Char(String="Aadhar", index=True, help="Aadhar number of the accountHolder")
+    Aadhar = fields.Char(String="Aadhar",help="Aadhar number of the accountHolder")
     account_Type = fields.Selection([('savings', 'Savings'), ('checking', 'Checking')], string='Account Type',
                                     help="Type of bank account", default='savings')
     balance = fields.Float(string='Balance', default=0.0, readonly=True, help='Current balance of the account')

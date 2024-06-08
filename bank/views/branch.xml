@@ -10,7 +10,7 @@
 
                         <button string="SearchRead" class="oe_highlight" type="object" name="searchRead" data-hotkey="q"/>
                         <button string="readGroup" class="oe_highlight" type="object" name="readGroup" data-hotkey="q"/>
-                        <button string="filter" class="oe_highlight" type="object" name="filter" data-hotkey="q"/>
+                        <button string="filter123" class="oe_highlight" type="object" name="filter" data-hotkey="q"/>
                         <button string="nameGet" class="oe_highlight" type="object" name="name_get" data-hotkey="q"/>
 
                         <button string="mapping" class="oe_highlight" type="object" name="mapping" data-hotkey="q"/>
