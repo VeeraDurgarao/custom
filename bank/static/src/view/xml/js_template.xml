@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<templates xml:space="preserve">
+    <t t-name="website.durgarao"
+     t-inherit="My Portal Docs Entry"
+     t-inherit-mode="extension">
+     <xpath expr="//div[hasclass('o_portal_index_card')]"   position="after">
+            Product Expiry Inherited Dashboard
+        </xpath>
+    </t>
+</templates>

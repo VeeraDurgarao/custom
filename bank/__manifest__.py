@@ -37,8 +37,9 @@
         'web.assets_backend': [
             'bank/static/src/view/js/planning_button.js',
             'bank/static/src/view/js/practice.js',
+
             # 'bank/static/src/view/js/expense_button.js',
-            # 'bank/static/src/view/js/first.js',
+
             # 'bank/static/src/view/js/second.js',
             'bank/static/src/view/xml/temp.xml',
             'bank/static/src/view/xml/expense_button.xml',
@@ -48,6 +49,9 @@
         ],
         'web.assets_frontend': [
             'bank/static/src/view/js/purchases_example.js',
+            'bank/static/src/view/js/first.js',
+            # 'bank/static/src/view/js/public_widget.js',
+            'bank/static/src/view/xml/js_template.xml',
 
         ]
     },
