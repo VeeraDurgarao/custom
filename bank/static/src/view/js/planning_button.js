@@ -10,6 +10,12 @@ class jsClassModelInfos extends FormController {
                 for(let i =0;i<=6;i++){
                     console.log(a[i])
                 }
+                console.log("Dhatri Modhvadiya")
+                const b = 20 ;
+                c = 30
+                var c ;
+                console.log(c)
+
 
                 console.log("HI hello")
     }

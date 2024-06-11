@@ -1,4 +1,4 @@
-/////** @odoo-module **/
+/** @odoo-module **/
 //import publicWidget from "@web/legacy/js/public/public_widget";
 //import PortalSidebar from "@portal/js/portal_sidebar";
 //
@@ -86,7 +86,7 @@
 ////        }
 ////    },
 ////});
-/ @odoo-module /
+
 import publicWidget from "@web/legacy/js/public/public_widget";
 import PortalSidebar from "@portal/js/portal_sidebar";
 
@@ -103,7 +103,7 @@ PortalSidebar.include({
         this.$el.css('border-radius', '15px');
 
         let element = document.querySelector(".col-lg-3.col-xl-4.d-print-none");
-        let element2 = document.querySelector(".col-12.col-lg-9.col-xl-8.mt-5.mt-lg-0");
+//        let element2 = document.querySelector(".col-12.col-lg-9.col-xl-8.mt-5.mt-lg-0");
         if (element) {
             element.style.backgroundColor = '#cdd0dc';
             element.style.borderTopLeftRadius = '15px';
@@ -114,16 +114,16 @@ PortalSidebar.include({
         } else {
             console.warn("Element with class 'col-lg-3 col-xl-4 d-print-none' not found");
         }
-        if (element2) {
-            element2.style.backgroundColor = '#d141bb';
-            let button = document.createElement("button");
-              button.textContent = "Click Me";
-              button.style.backgroundColor = "#ffffff";
-              element2.appendChild(button);
-
-        } else {
-            console.warn("Element with class 'col-lg-3 col-xl-4 d-print-none' not found");
-        }
+//        if (element2) {
+//            element2.style.backgroundColor = '#d141bb';
+//            let button = document.createElement("button");
+//              button.textContent = "Click Me";
+//              button.style.backgroundColor = "#ffffff";
+//              element2.appendChild(button);
+//
+//        } else {
+//            console.warn("Element with class 'col-lg-3 col-xl-4 d-print-none' not found");
+//        }
 
 //        let customer_support = document.getElementById('contact_us');
 //        if(customer_support) {

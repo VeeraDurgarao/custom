@@ -1,8 +1,22 @@
 /** @odoo-module **/
-//import publicWidget from "@web/legacy/js/public/public_widget"
-//
-//publicWidget.registry.jsTemplate = publicWidget.widget.extend({
-//selector:'.js_template'
-//start(){
-//console.log("Activated")}
-//})
+import {PlanningGanttController} from '@planning/views/planning_gantt/planning_gantt_controller';
+import { patch } from "@web/core/utils/patch";
+patch(PlanningGanttController.prototype, {
+
+        setup() {
+            super.setup();
+        },
+       async actionPlanning() {
+  try {
+    let date = new Date();
+    alert("Hi " + date);
+    const usTime = date.toLocaleString("en-US", { timeZone: "America/New_York" });
+    console.log(date);
+    console.log(usTime);
+  } catch (error) {
+    console.log("Error:", error);
+  }
+}
+
+
+    });
