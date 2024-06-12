@@ -9,7 +9,7 @@ patch(PlanningGanttController.prototype, {
        async actionPlanning() {
   try {
     let date = new Date();
-    alert("Hi " + date);
+    alert("Hi");
     const usTime = date.toLocaleString("en-US", { timeZone: "America/New_York" });
     console.log(date);
     console.log(usTime);

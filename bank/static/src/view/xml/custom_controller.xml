@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="bank.formController" t-inherit="web.ControlPanel" t-inherit-mode="extension">
+        <div>
+        <xpath expr="//t[@t-slot('control-panel-create-button')]" position="inside">
+
+                <button class="btn btn-primary" t-on-click="value">
+                   hi
+                </button>
+        </xpath>
+        </div>
+    </t>
+</templates>
