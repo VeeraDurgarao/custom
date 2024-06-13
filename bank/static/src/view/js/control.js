@@ -3,7 +3,7 @@ import { FormController } from "@web/views/form/form_controller";
 import { formView } from "@web/views/form/form_view";
 import { registry } from "@web/core/registry";
 
-class jsClassStock extends FormController {
+export class jsClassStock extends FormController {
     actionInfoStockForm() {
                 alert("HI")
 

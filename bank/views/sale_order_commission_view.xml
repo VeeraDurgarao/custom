@@ -68,6 +68,27 @@
         </field>
     </record>
 
+        <record id="view_trees_inherit" model="ir.ui.view">
+        <field name="name">bank.account</field>
+        <field name="model">bank.account</field>
+        <field name="inherit_id" ref="bank.view_bank_bank_account"/>
+        <field name="arch" type="xml">
+            <xpath expr="//tree" position="attributes">
+                <attribute name="js_class">add_new</attribute>
+            </xpath>
+        </field>
+    </record>
+             <record id="view_trees_inherits" model="ir.ui.view">
+        <field name="name">product.template</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_tree_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//tree" position="attributes">
+                <attribute name="js_class">manifest_but</attribute>
+            </xpath>
+        </field>
+    </record>
+
         <record id="view_hr_exre_tree_inherit" model="ir.ui.view">
         <field name="name">hr.expense</field>
         <field name="model">hr.expense</field>

@@ -4,6 +4,9 @@
         <xpath expr="//t[@t-set-slot='layout-actions']" position="inside">
             <button class="btn btn-primary" t-on-click="actionInfoStockForm">Button
             </button>
+            <button class="btn btn-secondary" t-on-click="actionIcons">
+                    hi
+                </button>
         </xpath>
     </t>
 </templates>
