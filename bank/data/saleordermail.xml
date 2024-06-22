@@ -1,0 +1,21 @@
+<odoo>
+    <record id="sale_order_main_template" model="mail.template">
+        <field name="name">Email Template For Blog</field>
+        <!-- Ensure this reference points to the correct XML ID of the sale.order model -->
+        <field name="model_id" ref="sale.model_sale_order"/>
+        <field name="subject">Mail Template: Demo Mail</field>
+        <field name="body_html" type="html">
+            <div style="margin: 0px; padding: 0px;">
+                <div >
+                    <h5>
+                        Hi, <t t-esc="object.name"/>
+                        <p>Thank you for visiting</p>
+                    </h5>
+                </div>
+                <br/>
+                <br/>
+                Regards<br/>
+            </div>
+        </field>
+    </record>
+</odoo>

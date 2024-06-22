@@ -96,6 +96,10 @@
         <menuitem id="menu_practice_master"
               name="Practice"
               parent="menu_bank_root"
+              />
+        <menuitem id="menu_practices_master"
+              name="Practice"
+              parent="menu_practice_master"
               action="practice_model_action_id"
               />
     </data>

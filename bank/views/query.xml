@@ -35,7 +35,7 @@
         </record>
          <menuitem id="menu_query_master"
               name="Query"
-              parent="menu_bank_root"
+              parent="menu_practice_master"
               action="query_bank_action_id"
               />
     </data>

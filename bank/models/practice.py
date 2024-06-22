@@ -19,6 +19,15 @@ class scheduleActions(models.Model):
 
     # amount = fields.Integer(string="Amount")
     ref_no = fields.Text(string="Ref No", readonly=True, default=lambda self: _('NEW'))
+
+    # user = fields.Many2one('res.users',string="Sales User")
+    # total = fields.Float(string="Total")
+    # count = fields.Float(string="Count")
+    # @api.onchange('user')
+    # def _compute_total_sales(self):
+    #     if self.user:
+    #         self.total =
+
     # ORM CREATE METHOD
     @api.model
     def create(self, vals):

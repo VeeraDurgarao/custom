@@ -1,0 +1,63 @@
+<odoo>
+    <data>
+<!--        <record id="view_bank_tree" model="ir.ui.view">-->
+<!--            <field name="name">connection_order.tree.views</field>-->
+<!--            <field name="model">connection.order</field>-->
+<!--            <field name="arch" type="xml">-->
+<!--                <tree string="Recycle">-->
+<!--                            <field name="sequence"/>-->
+<!--                            <field name="date"/>-->
+<!--                            <field name="cus_name"/>-->
+<!--                                <field name="partner"/>-->
+<!--                                <field name="template"/>-->
+<!--                </tree>-->
+<!--            </field>-->
+<!--        </record>-->
+        <record id="connection_connection_action_id" model="ir.actions.act_window">
+            <field name="name">Connection</field>
+            <field name="type">ir.actions.act_window</field>
+<!--            <field name="res_model">connection.order</field>-->
+             <field name="res_model">res.partner</field>
+<!--            <field name='view_id' ref="base.res_partner_kanban_view"></field>-->
+<!--            <field name="domain">[('customer_rank','&gt;', 0)]</field>-->
+            <field name="view_mode">kanban,form</field>
+        </record>
+         <record id="connections_order_action_id" model="ir.actions.act_window">
+            <field name="name">Connection</field>
+            <field name="type">ir.actions.act_window</field>
+<!--            <field name="res_model">connection.order</field>-->
+             <field name="res_model">sale.order</field>
+<!--            <field name='view_id' ref="base.res_partner_kanban_view"></field>-->
+<!--            <field name="domain">[('customer_rank','&gt;', 0)]</field>-->
+            <field name="view_mode">tree,form</field>
+        </record>
+        <record id="connections_product_action_id" model="ir.actions.act_window">
+            <field name="name">Connection</field>
+            <field name="type">ir.actions.act_window</field>
+             <field name="res_model">product.template</field>
+            <field name="view_mode">kanban,tree,form</field>
+        </record>
+
+        <menuitem id="menu_connection_master"
+              name="Customers"
+              parent="menu_practice_master"
+              action="connection_connection_action_id"
+              />
+        <menuitem id="menu_order_master"
+              name="Orders"
+              parent="menu_practice_master"
+              action="connections_order_action_id"
+              />
+        <menuitem id="menu_order_master"
+              name="Products"
+              parent="menu_practice_master"
+              action="connections_product_action_id"
+              />
+         <menuitem id="menu_action_tax"
+         action="connections_order_action_id"
+         parent="point_of_sale.menu_point_config_product"
+         groups="base.group_no_one"
+                   name="Sale Orders"
+         sequence="40"/>
+    </data>
+</odoo>

@@ -2,7 +2,8 @@
     'name': 'Bank Management',
     'version': '1.0',
     'summary': 'Bank Management System',
-    'depends': ['base', 'mail', 'sale', 'stock', 'planning', 'web', 'hr_expense','website','web_gantt'],
+    'depends': ['base', 'mail', 'sale', 'stock',
+                'planning', 'web', 'hr_expense','website','web_gantt','point_of_sale',],
     'data': ['security/ir.model.access.csv',
              'security/recycle_account_groups.xml',
              # 'security/recycle_account_record_rules.xml',
@@ -10,6 +11,7 @@
              'data/EmailTemplate.xml',
              'data/schedule_action.xml',
              'data/CustomerEmailTemplate.xml',
+             'data/saleordermail.xml',
              'data/monthly_excel_report.xml',
              'wizard/demo.xml',
              'wizard/print.xml',
@@ -32,6 +34,7 @@
              'views/sale_line_oreder_commission.xml',
              'views/sale_inheritate_menu.xml',
              'views/practice.xml',
+             'views/connection.xml',
              ],
     'assets': {
         'web.assets_backend': [
@@ -53,16 +56,17 @@
             'bank/static/src/view/xml/js_template.xml',
 
 
-
         ],
         'web.assets_frontend': [
             'bank/static/src/view/js/purchases_example.js',
             'bank/static/src/view/js/first.js',
-
-
-
-
-        ]
+            'bank/static/src/view/js/widget.js',
+        ],
+ 'point_of_sale._assets_pos': [
+            'bank/static/src/view/xml/pos.xml',
+     'bank/static/src/view/js/pos.js',
+     # 'bank/static/src/view/js/quantity.js',
+ ],
     },
 
     'installable': True,

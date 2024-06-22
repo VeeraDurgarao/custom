@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+    <t t-name="point_of_sale.CustomerButtons">
+        <button class="btn-light rounded-0 fw-bolder" t-on-click="onClick">
+          <i class="fa fa-solid fa-ban"></i>
+            <span> </span>
+            <span>Clear</span>
+        </button>
+    </t>
+
+<!--    <templates id="template" xml:space="preserve">-->
+<!--    <t t-name="point_of_sale.Customer">-->
+<!--        <button class="btn-light rounded-0 fw-bolder" t-on-click="increment">-->
+<!--            <span> </span>-->
+<!--            <span>Button: <t t-esc="state.value"/></span>-->
+<!--        </button>-->
+<!--    </t>-->
+
+    <t t-name="pos_button.PaymentScreenButtons" t-inherit="point_of_sale.PaymentScreenButtons" t-inherit-mode="extension">
+<xpath expr="//div[hasclass('payment-buttons')]" position="inside">
+<button class="button button-partial-payment btn btn-light py-3 text-start rounded-0 border-bottom">
+<i class="fa fa-money me-2"/>Custom Button
+</button>
+</xpath>
+   </t>
+
+    <t t-name="point_of_sale.Order" t-inherit="point_of_sale.OrderWidget" t-inherit-mode="extension">
+<xpath expr="//div[@t-if='props.tax']" position="after">
+<div class="button button-partial-payment btn btn-light py-3 text-start rounded-0 border-bottom">
+ <span>Total Lines: </span>
+</div>
+</xpath>
+   </t>
+</templates>
