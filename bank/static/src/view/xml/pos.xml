@@ -25,10 +25,34 @@
    </t>
 
     <t t-name="point_of_sale.Order" t-inherit="point_of_sale.OrderWidget" t-inherit-mode="extension">
-<xpath expr="//div[@t-if='props.tax']" position="after">
-<div class="button button-partial-payment btn btn-light py-3 text-start rounded-0 border-bottom">
- <span>Total Lines: </span>
-</div>
-</xpath>
-   </t>
+        <xpath expr="//div[@t-if='props.tax']" position="after">
+            <div>
+                Total Lines:
+                <span t-esc="props.quantity" class="total"/>
+            </div>
+        </xpath>
+    </t>
+    <t t-name="point_of_sale.quantity" t-inherit="point_of_sale.ProductScreen" t-inherit-mode="extension">
+        <xpath expr="//OrderWidget[@t-slot-scope='scope']" position="attributes">
+            <attribute name="quantity">this.pos.get_order().get_orderlines().length</attribute>
+        </xpath>
+    </t>
+
+<!--    <t t-name="point_of_sale.Anubhav" t-inherit="point_of_sale.OrderWidget" t-inherit-mode="extension">-->
+<!--        <xpath expr="//div[@t-if='props.tax']" position="after">-->
+<!--            <div>-->
+<!--                Name:-->
+<!--                <span> Anubhav </span>-->
+<!--            </div>-->
+<!--        </xpath>-->
+<!--    </t>-->
+<!--     <t t-name="point_of_sale.Anubhav" t-inherit="point_of_sale.OrderWidget"  t-inherit-mode="extension">-->
+<!--        <xpath expr="//div[@t-if='props.tax']" position="before">-->
+<!--            <div>-->
+<!--            Name:-->
+<!--            Anubhav-->
+<!--            </div>-->
+<!--        </xpath>-->
+<!--    </t>-->
+
 </templates>

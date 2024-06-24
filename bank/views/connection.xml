@@ -59,5 +59,12 @@
          groups="base.group_no_one"
                    name="Sale Orders"
          sequence="40"/>
+
+        <menuitem id="menu_action_hr_expense"
+         action="connections_order_action_id"
+         parent="hr_expense.menu_hr_expense_root"
+                  name="HR Orders"
+         />
+
     </data>
 </odoo>
