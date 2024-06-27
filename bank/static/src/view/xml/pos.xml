@@ -7,6 +7,19 @@
             <span>Clear</span>
         </button>
     </t>
+    <t t-name="point_of_sale.addNotes">
+        <button class="btn-light rounded-0 fw-bolder" t-on-click="() => this.onClick()">
+            <span>AddNote</span>
+        </button>
+    </t>
+    <t t-name="point_of_sale.discount">
+        <button class="btn-light rounded-0 fw-bolder" t-on-click="() => this.onClick()">
+            <i class="fa fa-solid fa-percent"></i>
+            <span>Discount</span>
+        </button>
+    </t>
+
+
 
 <!--    <templates id="template" xml:space="preserve">-->
 <!--    <t t-name="point_of_sale.Customer">-->

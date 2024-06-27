@@ -66,6 +66,15 @@ class StockMoveNew(models.Model):
 
     custom_name = fields.Char(string="Custom Name")
     commission = fields.Float(string="Commission", default=0)
+    invisible = fields.Char(string='Invisible')
+    flag = fields.Boolean(string='Flag', default=False)
+
+    @api.onchange('partner_id')
+    def _compute_customer_detail(self):
+        if self.partner_id:
+            self.flag = False
+        else:
+            self.flag = True
 
     @api.model
     def create(self, vals):

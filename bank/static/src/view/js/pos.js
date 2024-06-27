@@ -24,16 +24,16 @@ export class CreateButton1 extends Component {
         const selectedOrderline = this.pos.get_order().get_selected_orderline();
         console.log(selectedOrderline)
         const orderLine = this.pos.get_order();
-//        if (!orderLine) {
-//        //    console.error('No order found.');
-//            return;
-//          }
-//        const currentOrder = orderLine.get_orderlines().slice();
-//        for(let i=0;i<currentOrder.length;i++){
-//             orderLine.removeOrderline(currentOrder[i]);
-//    //         console.log(currentOrder[i])
-//        }
-//        console.log(selectedOrderline)
+        if (!orderLine) {
+        //    console.error('No order found.');
+            return;
+          }
+        const currentOrder = orderLine.get_orderlines().slice();
+        for(let i=0;i<currentOrder.length;i++){
+             orderLine.removeOrderline(currentOrder[i]);
+    //         console.log(currentOrder[i])
+        }
+        console.log(selectedOrderline)
     }
 }
 

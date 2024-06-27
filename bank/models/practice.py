@@ -6,6 +6,17 @@ class scheduleActions(models.Model):
     _description = "practice"
 
     customer = fields.Many2one("res.partner",string="customer")
+
+    def update_customer_children(self):
+        if self.customer:
+            self.customer.write({
+                'child_ids': [(0, 0, {
+                    'name': 'Child Partner',
+                    'email': 'child@example.com'
+                })]
+            })
+        else:
+            raise ValueError("No customer set for this record")
     partner_name = fields.Char(string='Customer Name',related = "customer.name")
     expiration = fields.Datetime(string="Expiration")
     Date = fields.Datetime(string="Date")
@@ -20,6 +31,9 @@ class scheduleActions(models.Model):
     # amount = fields.Integer(string="Amount")
     ref_no = fields.Text(string="Ref No", readonly=True, default=lambda self: _('NEW'))
 
+    invisible = fields.Char(string='Invisible')
+    flag = fields.Boolean(string='Flag', default=False)
+    hide = fields.Boolean(string='Tick',defailt = False)
     # user = fields.Many2one('res.users',string="Sales User")
     # total = fields.Float(string="Total")
     # count = fields.Float(string="Count")
@@ -37,17 +51,33 @@ class scheduleActions(models.Model):
 
     @api.depends('customer')
     def _compute_customer_detail(self):
+        if self.customer:
+            self.Date = datetime.today()
+            self.expiration = datetime.today() + timedelta(days=7)
+            self.flag = False
+
+        else:
+            self.flag = True
         for record in self:
             if record.customer:
                 record.customer_details = f"<p>{record.customer.name}<br/>{record.customer.email}<br/>{record.customer.phone}</p>"
             else:
                 record.customer_details = "<p>No customer selected</p>"
-
-    @api.onchange('customer')
-    def _onchange_customer(self):
-        if self.customer:
-            self.Date = datetime.today()
-            self.expiration = datetime.today() + timedelta(days=7)
+    #
+    # @api.onchange('customer')
+    # def _onchange_customer(self):
+    #     if self.customer:
+    #         self.Date = datetime.today()
+    #         self.expiration = datetime.today() + timedelta(days=7)
+    #         self.flag = False
+    #     else:
+    #         self.flag = True
+    @api.onchange('payment_term_id')
+    def any(self):
+        if self.payment_term_id:
+            self.hide = True
+        else:
+            self.hide = False
 
     def sendmail(self):
         pass

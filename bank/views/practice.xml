@@ -22,6 +22,9 @@
                             <field name="customer_details"/>
                             <field name="partner_name"/>
                             <field name="quotation_template"/>
+                             <field name="invisible" invisible="flag == True"/>
+                    <field name="flag" invisible="1"/>
+                    <field name="hide"/>
                         </group>
                             <group>
                             <field name="expiration"/>

@@ -91,6 +91,8 @@
             <field name="arch" type="xml">
                 <xpath expr="//field[@name='country_code']" position="before">
                     <field name="custom_name"/>
+                    <field name="invisible" invisible="flag == True"/>
+                    <field name="flag" invisible="1"/>
                 </xpath>
             </field>
         </record>

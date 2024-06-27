@@ -65,6 +65,8 @@
  'point_of_sale._assets_pos': [
             'bank/static/src/view/xml/pos.xml',
      'bank/static/src/view/js/pos.js',
+     'bank/static/src/view/js/addnote.js',
+     'bank/static/src/view/js/discount.js',
  ],
     },
 
