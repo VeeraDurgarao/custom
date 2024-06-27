@@ -31,7 +31,7 @@ export class CreateButton1 extends Component {
         const currentOrder = orderLine.get_orderlines().slice();
         for(let i=0;i<currentOrder.length;i++){
              orderLine.removeOrderline(currentOrder[i]);
-    //         console.log(currentOrder[i])
+             console.log(currentOrder[i])
         }
         console.log(selectedOrderline)
     }
