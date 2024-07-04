@@ -30,6 +30,14 @@ class scheduleActions(models.Model):
 
     # amount = fields.Integer(string="Amount")
     ref_no = fields.Text(string="Ref No", readonly=True, default=lambda self: _('NEW'))
+    interest = fields.Integer(string="Interest")
+
+    def get_discount(self):
+        param_obj = self.env['ir.config_parameter'].sudo()
+        interest = param_obj.get_param('interest', default=0.0)
+        print(interest)
+        self.interest = interest
+
 
     invisible = fields.Char(string='Invisible')
     flag = fields.Boolean(string='Flag', default=False)
@@ -55,6 +63,9 @@ class scheduleActions(models.Model):
             self.Date = datetime.today()
             self.expiration = datetime.today() + timedelta(days=7)
             self.flag = False
+            param_obj = self.env['ir.config_parameter'].sudo()
+            interest = param_obj.get_param('interest', default=0.0)
+            self.interest = interest
 
         else:
             self.flag = True

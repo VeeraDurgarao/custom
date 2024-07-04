@@ -97,6 +97,42 @@
             </field>
         </record>
 
+        <record id="pos_order_line" model="ir.ui.view">
+            <field name="name">pos.order.form.view</field>
+            <field name="model">pos.order</field>
+            <field name="inherit_id" ref="point_of_sale.view_pos_pos_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='session_id']"
+                       position="after">
+                    <field name="note"/>
+                    <field name="total_amount"/>
+<!--                    <field name="location"/>popup code-->
+                    <field name="screen"/>
+                </xpath>
+
+            </field>
+        </record>
+
+         <record id="pos_order_form_new" model="ir.ui.view">
+        <field name="name">pos.order</field>
+        <field name="model">pos.order</field>
+        <field name="inherit_id" ref="point_of_sale.view_pos_pos_form" />
+        <field name="arch" type="xml">
+             <xpath expr="//notebook" position="inside">
+
+                <page string="Total">
+                    <group>
+                    <field name="total_amount"/>
+                    <field name="employe"/>
+                    <field name="confirmation"/>
+
+                    </group>
+                    </page>
+
+            </xpath>
+        </field>
+    </record>
+
         <record id="_stock_form_view" model="ir.ui.view">
             <field name="name">stock.picking.form.view</field>
             <field name="model">stock.picking</field>

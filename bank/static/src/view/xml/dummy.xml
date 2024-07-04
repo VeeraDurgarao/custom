@@ -5,4 +5,11 @@
             <button type="button" class="btn btn-secondary" t-on-click="actionSaleList">Custom Model Dummy</button>
         </xpath>
     </t>
+<!--       <t t-name="hr_expense.NewButton" t-inherit="hr_expense.ListButtons" t-inherit-mode="extension">-->
+<!--        <xpath expr="//button[@t-if='displayCreateReport()']" position="after">-->
+<!--                <button>-->
+<!--        SetSundry-->
+<!--    </button>-->
+<!--        </xpath>-->
+<!--    </t>-->
 </templates>

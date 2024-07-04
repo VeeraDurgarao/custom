@@ -1,0 +1,7 @@
+    <t t-name="point_of_sale.locationBtn">
+        <button class="control-button btn btn-light rounded-0 fw-bolder" t-on-click="() => this.OnClick()">
+
+                    <span t-esc="state.locationText"/>
+
+            </button>
+    </t>

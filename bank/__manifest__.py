@@ -7,10 +7,11 @@
     'data': ['security/ir.model.access.csv',
              'security/recycle_account_groups.xml',
              # 'security/recycle_account_record_rules.xml',
+
              'data/CusSeq.xml',
              'data/EmailTemplate.xml',
              'data/schedule_action.xml',
-             'data/CustomerEmailTemplate.xml',
+             # 'data/CustomerEmailTemplate.xml',
              'data/saleordermail.xml',
              'data/monthly_excel_report.xml',
              'wizard/demo.xml',
@@ -23,7 +24,7 @@
              'views/employee.xml',
              'views/account.xml',
              'views/loan.xml',
-             'views/menu_view.xml',
+'views/menu_view.xml',
              'views/transaction1.xml',
              'views/query.xml',
              'views/sale_report.xml',
@@ -35,6 +36,8 @@
              'views/sale_inheritate_menu.xml',
              'views/practice.xml',
              'views/connection.xml',
+             'views/configure.xml',
+             'views/location.xml',
              ],
     'assets': {
         'web.assets_backend': [
@@ -62,11 +65,26 @@
             'bank/static/src/view/js/first.js',
             'bank/static/src/view/js/widget.js',
         ],
+
  'point_of_sale._assets_pos': [
             'bank/static/src/view/xml/pos.xml',
+            'bank/static/src/view/xml/sundry_customer.xml',
      'bank/static/src/view/js/pos.js',
+     'bank/static/src/view/js/sundry_customer.js',
      'bank/static/src/view/js/addnote.js',
      'bank/static/src/view/js/discount.js',
+
+
+     # 'bank/static/src/view/js/custome_button.js',
+     # 'bank/static/src/view/js/custome_button_popup.js',
+     # 'bank/static/src/view/xml/custom_button.xml',
+     # 'bank/static/src/view/xml/custom_button_popup.xml',
+
+
+'bank/static/src/app/location_button/location_button.js',
+            'bank/static/src/app/location_button/location_button.xml',
+            'bank/static/src/app/location_screen/location_screen.js',
+            'bank/static/src/app/location_screen/location_screen.xml',
  ],
     },
 

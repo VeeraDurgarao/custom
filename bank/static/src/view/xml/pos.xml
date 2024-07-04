@@ -21,6 +21,7 @@
 
 
 
+
 <!--    <templates id="template" xml:space="preserve">-->
 <!--    <t t-name="point_of_sale.Customer">-->
 <!--        <button class="btn-light rounded-0 fw-bolder" t-on-click="increment">-->
@@ -37,19 +38,37 @@
 </xpath>
    </t>
 
-    <t t-name="point_of_sale.Order" t-inherit="point_of_sale.OrderWidget" t-inherit-mode="extension">
-        <xpath expr="//div[@t-if='props.tax']" position="after">
-            <div>
-                Total Lines:
-                <span t-esc="props.quantity" class="total"/>
-            </div>
-        </xpath>
-    </t>
+<!--    <t t-name="point_of_sale.Order" t-inherit="point_of_sale.OrderWidget" t-inherit-mode="extension">-->
+<!--        <xpath expr="//div[@t-if='props.tax']" position="after">-->
+<!--            <div>-->
+<!--                Total Lines:-->
+<!--                <span t-esc="props.quantity" class="total"/>-->
+<!--            </div>-->
+<!--        </xpath>-->
+<!--    </t>-->
     <t t-name="point_of_sale.quantity" t-inherit="point_of_sale.ProductScreen" t-inherit-mode="extension">
         <xpath expr="//OrderWidget[@t-slot-scope='scope']" position="attributes">
             <attribute name="quantity">this.pos.get_order().get_orderlines().length</attribute>
         </xpath>
     </t>
+     <t t-name="point_of_sale.notes" t-inherit="point_of_sale.OrderWidget" t-inherit-mode="extension">
+       <xpath expr="//div[hasclass('order-container')]" position="after">
+             <span class="customNote"></span>
+        </xpath>
+    </t>
+    <t t-name="point_of_sale.NoteInReport" t-inherit="point_of_sale.OrderReceipt" t-inherit-mode="extension">
+        <xpath expr="//div[hasclass('pos-receipt-amount')]" position="after">
+            <t t-if="props.data.note">
+                <div class="order-note">
+                    AddNote: <t t-esc="props.data.note"/><br/>
+<!--                        <span class="Location">Location :- <t t-esc="props.data.location_recept"/></span>-->
+
+                </div>
+            </t>
+            <span class="Location">Location :- <t t-esc="props.data.screen_receipt"/></span>
+        </xpath>
+    </t>
+
 
 <!--    <t t-name="point_of_sale.Anubhav" t-inherit="point_of_sale.OrderWidget" t-inherit-mode="extension">-->
 <!--        <xpath expr="//div[@t-if='props.tax']" position="after">-->

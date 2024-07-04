@@ -33,11 +33,11 @@
             <field name="res_model">query.bank</field>
             <field name="view_mode">graph,pivot</field>
         </record>
-         <menuitem id="menu_query_master"
-              name="Query"
-              parent="menu_practice_master"
-              action="query_bank_action_id"
-              />
+<!--         <menuitem id="menu_query_master"-->
+<!--              name="Query"-->
+<!--              parent="menu_practice_master"-->
+<!--              action="query_bank_action_id"-->
+<!--              />-->
     </data>
 </odoo>
 

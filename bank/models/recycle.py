@@ -148,7 +148,77 @@ class StockOrderLineNew(models.Model):
 #     def _get_custom_move_fields(self):
 #         fields = super(StockRule, self)._get_custom_move_fields()
 #         fields += ['extra']
-#         return fields
+#         return fields\
+# class posOrders_new(models.Model):
+#     _inherit="pos.order"
+#
+#     note = fields.Char(string="Durgarao Note")
+#
+#     @api.model
+#     def custom_note(self,ui_order):
+#         return {
+#             'note' : ui_order['note']
+#         }
+# from odoo import models, fields, api
+#
+# class posOrders_new(models.Model):
+#     _inherit = "pos.order"
+#
+#     note = fields.Char(string="Durgarao Note")
+#
+#     @api.model
+#     def _order_fields(self, ui_order):
+#         order_fields = super(posOrders_new, self)._order_fields(ui_order)
+#         order_fields['note'] = ui_order.get('note', '')
+#         return order_fields
+#
+#     def get_discount(self):
+#         # print("hello")
+#         disc = self.env['res.config.settings'].search([])
+#         for a in disc:
+#             print(a.discount_limit)
+#             return a.discount_limit
+
+from odoo import models, fields, api
+
+class posOrders_new(models.Model):
+    _inherit = "pos.order"
+
+    note = fields.Char(string="Durgarao Note")
+    total_amount = fields.Float(string="Total Amount")
+    employe = fields.Char(string="Employee Name")
+    confirmation = fields.Boolean(string="Confirmation")
+    # location = fields.Char(string="Location")
+    screen = fields.Char(string='location')
+
+    @api.model
+    def _order_fields(self, ui_order):
+        order_fields = super(posOrders_new, self)._order_fields(ui_order)
+        order_fields['note'] = ui_order.get('note', '')
+        order_fields['total_amount'] = ui_order.get('amount_total', '')
+        emp = ui_order.get('employee_id', '')
+        order_fields['location'] = ui_order.get('location_pos')
+        order_fields['screen'] = ui_order.get('screen_new')
+        value = self.env['hr.employee'].browse(emp)
+        print(value.name)
+        order_fields['employe'] = value.name
+        # order_fields['employe'] = ui_order.get('cashier')
+        # print(ui_order.get('cashier'))
+        return order_fields
+
+    def confirm(self):
+
+        return self.write({
+            'confirmation':True
+        })
+
+
+    def get_discount(self):
+        param_obj = self.env['ir.config_parameter'].sudo()
+        discount_limit = param_obj.get_param('Percentage', default=0.0)
+        return float(discount_limit)
+
+
 
 class StockMovePickingNew(models.Model):
     _inherit = 'stock.move'
@@ -161,3 +231,5 @@ class new(models.Model):
     _sql_constraints = [
         ('order_product_unique', 'unique(order_id, product_id)', 'The product must be unique per sale order.')
     ]
+
+

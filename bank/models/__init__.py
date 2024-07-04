@@ -13,6 +13,8 @@ from . import sale_report
 from . import practice
 from . import planning_slot
 from . import connection
+from . import configure
+from . import location
 
 
 

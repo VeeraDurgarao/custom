@@ -20,5 +20,6 @@ bank.access_query_bank,access_query_bank,bank.model_query_bank,base.group_user,1
 
 bank.access_reports_customer,access_reports_customer,bank.model_reports_customer,base.group_user,1,1,1,1
 bank.access_practice_model,access_practice_model,bank.model_practice_model,base.group_user,1,1,1,0
+bank.access_res_location,access_res_location,bank.model_res_location,base.group_user,1,1,1,1
 
 

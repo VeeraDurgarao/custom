@@ -37,6 +37,13 @@ class Button(models.Model):
             args += ['|', '|', ('name', operator, name), ('email', operator, name), ('location', operator, name)]
         return self._search(args, limit=limit, access_rights_uid=name_get_uid)
 
+    def default_get(self, fields_list):
+        res = super(Button, self).default_get(fields_list)
+
+        res['email'] = 'customer@gmail.com'
+        res['Contact'] = '7896541235'
+        return res
+
     @api.model
     def name_get(self):
        return list(zip(self._ids, self.mapped('name')))

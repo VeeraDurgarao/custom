@@ -1,0 +1,64 @@
+<odoo>
+    <data>
+        <!-- Unique ID for the ir.ui.view record -->
+        <record id="res_config_settings_view_form_new_employee_contract" model="ir.ui.view">
+            <field name="name">res.config.settings.view.form.inherit.employee.contract</field>
+            <field name="model">res.config.settings</field>
+            <field name="priority" eval="15"/>
+            <field name="inherit_id" ref="base.res_config_settings_view_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//form" position="inside">
+
+                    <app data-string="Employee Managements" string="Bank Managements" name="bank">
+                        <block title="Employee Management settings" name="employee_managements">
+                            <setting string="Contract Type"
+                                     help="Select the Contract Type"
+                                     id="contract_type_setting">
+                                <field name="contract_type"/>
+                                <div class="content-group"
+                                     invisible="not contract_type"
+                                     id="group_contract_type_setting">
+                                    <div class="text-warning mt16">
+                                        <strong>Save</strong>
+                                        this page and come back here to set up the
+                                        feature.
+                                    </div>
+                                </div>
+                                <group>
+                                    <field name="employee"/>
+
+                                </group>
+                                <group>
+                                    <field name="interest"/>
+                                </group>
+                            </setting>
+                        </block>
+                    </app>
+                </xpath>
+            </field>
+        </record>
+
+        <!-- Unique ID for the ir.actions.act_window record -->
+        <!--        <record id="res_config_settings_action_employee_contract" model="ir.actions.act_window">-->
+        <!--            <field name="name">Configuration</field>-->
+        <!--            <field name="type">ir.actions.act_window</field>-->
+        <!--            <field name="res_model">res.config.settings</field>-->
+        <!--            <field name="view_mode">form</field>-->
+        <!--            <field name="target">inline</field>-->
+        <!--        </record>-->
+
+        <!--        <menuitem id="employee_management_menu_root"-->
+        <!--                  name="Bank Management"-->
+        <!--                  sequence="1"-->
+        <!--        web_icon="fa fa-users"/>-->
+        <!--&lt;!&ndash;        <menuitem id="employee_management_menu_action"&ndash;&gt;-->
+        <!--&lt;!&ndash;                  name="Configuration"&ndash;&gt;-->
+        <!--&lt;!&ndash;                  parent="employee_management_menu_root"&ndash;&gt;-->
+        <!--&lt;!&ndash;                  sequence="6"/>&ndash;&gt;-->
+        <!--        <menuitem id="employee_contract_settings_menu_action"-->
+        <!--                  name="Settings"-->
+        <!--                  parent="employee_management_menu_root"-->
+        <!--                  action="res_config_settings_action_employee_contract"-->
+        <!--                  sequence="7"/>-->
+    </data>
+</odoo>

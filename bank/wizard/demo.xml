@@ -15,8 +15,8 @@
                     </div>
                     <sheet>
                         <group>
-                            <field name="help"/>
-                            <field name="Report_issue"/>
+                            <field name="help_text"/>
+                            <field name="report_issue"/>
                         </group>
                         <footer>
                             <button name="submit" string="Submit" type="object" class="btn-primary"/>

@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+<!--This is used for creating a new screen for showing booked orders-->
+    <t t-name="custom_pos_screen.ProductCombosScreen">
+        <div class="combo-screen screen h-100 bg-100">
+            <!-- Controls -->
+            <div class="controls d-flex align-items-center justify-content-between mt-1 mt-md-0 p-2 bg-400">
+                <div class="buttons d-flex gap-2">
+                    <button class="discard btn btn-lg btn-light" t-on-click="() => this.pos.showScreen('ProductScreen')">
+                        <span class="search-icon">
+                            <i class="fa fa-angle-double-left"/>
+                        </span>
+                        Back
+                    </button>
+                </div>
+            </div>
+
+      <div class="container-md">
+        <table class="table">
+          <thead>
+            <tr>
+                 <th  scope="col" >S.No</th>
+              <th  scope="col">Name</th>
+              <th scope="col">Address</th>
+              <th scope="col">Pincode</th>
+            </tr>
+          </thead>
+<!--            <div class="orders overflow-y-auto flex-grow-1">-->
+<!--                &lt;!&ndash; Header row &ndash;&gt;-->
+<!--                <div class="header-row d-flex text-bg-700 fw-bolder">-->
+<!--                    <div class="col wide p-2">Location Name</div>-->
+<!--                    <div class="col wide p-2">Address</div>-->
+<!--                    <div class="col wide p-2">Pin Code</div>-->
+<!--                </div>-->
+<!--            </div>-->
+          <tbody>
+            <t t-set="i" t-value="1"/>
+            <t t-foreach="props.data" t-as="order" t-key="order.id">
+<!--                <PartnerLine location="location"-->
+<!--                  selectedLocation="state.selectedLocation"-->
+<!--                  onClickEdit.bind="editPartner"-->
+<!--                  onClickPartner.bind="clickPartner"/>-->
+              <tr   t-on-click="() => this._Confirm(order)">
+                <th scope="row"><t t-esc="i"/></th>
+                <td><t t-esc="order.name"/></td>
+                <td><t t-esc="order.address"/></td>
+                <td><t t-esc="order.pin_code"/></td>
+                <t t-set="i" t-value="i+1"/>
+              </tr>
+            </t>
+
+          </tbody>
+        </table>
+      </div>
+         </div>
+    </t>
+</templates>
+
+
+<!--<?xml version="1.0" encoding="UTF-8"?>-->
+<!--<templates id="template" xml:space="preserve">-->
+<!--    <t t-name="custom_pos_screen.ProductCombosScreen">-->
+<!--        <div class="combo-screen screen h-100 bg-100">-->
+<!--            &lt;!&ndash; Controls &ndash;&gt;-->
+<!--            <div class="controls d-flex align-items-center justify-content-between mt-1 mt-md-0 p-2 bg-400">-->
+<!--                <div class="buttons d-flex gap-2">-->
+<!--                    <button class="discard btn btn-lg btn-light" t-on-click="() => this.pos.showScreen('ProductScreen')">-->
+<!--                        <span class="search-icon">-->
+<!--                            <i class="fa fa-angle-double-left"/>-->
+<!--                        </span>-->
+<!--                        Back-->
+<!--                    </button>-->
+<!--                </div>-->
+<!--            </div>-->
+            <!-- Orders section -->
+<!--            <div class="orders overflow-y-auto flex-grow-1">-->
+<!--                &lt;!&ndash; Header row &ndash;&gt;-->
+<!--                <div class="header-row d-flex text-bg-700 fw-bolder">-->
+<!--                    <div class="col wide p-2">Location Name</div>-->
+<!--                    <div class="col wide p-2">Address</div>-->
+<!--                    <div class="col wide p-2">Pin Code</div>-->
+<!--                </div>-->
+
+                <!-- Fetch and iterate over POS configurations -->
+<!--              <t t-set="posConfigs" t-value="getPosConfigs()"/>-->
+<!--<t t-if="posConfigs">-->
+<!--    <t t-foreach="props.data" t-as="order" t-key="order.id">-->
+<!--        <t t-foreach="posConfigs.location_ids" t-as="location" t-key="location.id">-->
+<!--            <div class="order-row">-->
+<!--                <div class="col wide p-2">-->
+<!--                    <t t-esc="order.name"/>-->
+<!--                </div>-->
+<!--                <div class="col wide p-2">-->
+<!--                    <t t-esc="order.address"/>-->
+<!--                </div>-->
+<!--                <div class="col wide p-2">-->
+<!--                    <t t-esc="order.pin_code"/>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </t>-->
+<!--    </t>-->
+<!--</t>-->
+
+<!--            </div>-->
+<!--        </div>-->
+<!--    </t>-->
+<!--</templates>-->
+

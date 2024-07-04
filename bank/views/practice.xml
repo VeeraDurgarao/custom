@@ -7,7 +7,7 @@
                 <form string="practice">
                     <header>
                         <button string="Send Mail" class="oe_highlight" type="object" name="sendmail" data-hotkey="q"/>
-                        <button string="Confirm"  type="object" name="confirm" data-hotkey="q"/>
+                        <button string="Confirm"  type="object" name="get_discount" data-hotkey="q"/>
                         <button string="Preview" type="object" name="preview" data-hotkey="q"/>
                     </header>
                     <div class="oe_title">
@@ -30,6 +30,7 @@
                             <field name="expiration"/>
                             <field name="Date"/>
                             <field name="payment_term_id"/>
+                                 <field name="interest"/>
                                 </group>
                         </group>
                         <notebook>
@@ -63,6 +64,7 @@
                         <field name="Date"/>
                         <field name="payment_term_id"/>
                         <field name="customer_details"/>
+<!--                        <field name="interest"/>-->
                 </tree>
             </field>
         </record>
