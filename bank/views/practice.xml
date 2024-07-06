@@ -107,6 +107,7 @@
               parent="menu_practice_master"
               action="practice_model_action_id"
               />
+
     </data>
 </odoo>
 

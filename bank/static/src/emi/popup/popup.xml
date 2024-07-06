@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+   <!--  button popup template  -->
+   <t t-name="custom_popup.CustomButtonPopup" owl="1">
+   <div class="popup custom_popup">
+   <!-- Modal Header -->
+       <div class="modal-header justify-content-center">
+            <h2 class="modal-title">
+               <t t-esc="props.title"/>
+            </h2>
+         </div>
+       <!-- Modal Body -->
+
+<div class="modal-body custom-form-view">
+<form>
+
+ <label style="margin-right: 293px;">DATE(*)</label>
+                <div>
+                        <input type="date" id='BookingDate' name="order_date"
+                               class='form-control booking_field'
+                               maxlength="10"
+                               t-att-value="props.currentDate"/>
+                    </div>
+
+<div class="col d-flex justify-content-between align-items-center p-3">
+
+<label class="form-label label" for="customer">Customer Name:</label>
+            <input class='form-control booking_field'
+                   type='text'
+                   style="height:34px;border-radius:5px;"
+                   t-att-value="props.partner.name" readonly="1"/>
+        </div>
+
+
+
+<div class="col d-flex justify-content-between align-items-center p-3">
+
+<label class="form-label label" for="customer">Total Amount</label>
+
+<input class='form-control booking_field' name="amount"
+                               type='text'
+                               style="height:34px;border-radius:5px;"
+                               t-att-value="order.get_total_with_tax()"
+                               readonly="1"/>
+
+</div>
+        <div class="radio"
+                     style="width:100%;float: left;text-align: center;font-size: 23px;">
+                    <label>Cash</label>
+                    <input type="radio" name="method" id="pickup"
+                           style="width: auto;min-height: auto;margin-right: 28px;"
+                           checked="checked" value="pickup" t-ref="pickup_radio"
+                           t-on-click="showHide"/>
+                    <label>EMI</label>
+                    <input type="radio" name="method" id="deliver"
+                           style="width: auto;min-height: auto;"
+                           value="deliver" t-ref="deliver_radio"
+                          />
+                </div>
+
+</form>
+ </div>
+       <!-- Modal Footer -->
+       <div class="footer footer-flex modal-footer justify-content-end">
+            <div class="button cancel btn btn-lg btn-primary"
+                    t-on-click="cancel">
+               <t t-esc="props.closePopup"/>
+            </div>
+         </div>
+       </div>
+   </t>
+</templates>

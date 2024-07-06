@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+
+    <t t-name="CarryBagButton" owl="1">
+        <span class="control-button">
+            <i class="fa fa-tag"></i>
+            <span> </span>
+            <span>Carry Bag</span>
+        </span>
+    </t>
+
+    <t t-name="PosBagPopup" owl="1">
+        <div class="modal-dialog">
+            <Draggable>
+                <div class="popup" style="height: 400px;">
+
+                    <header class="title drag-handle">
+                        List of Bag Charges
+                    </header>
+                    <span class="body">
+                        <ProductList products="productsToDisplay" />
+                    </span>
+
+                    <div class="body traceback"
+                         style="font-family: 'Brush Script MT', cursive;font-weight: bold;font-size: 20px;">
+
+                        <div class='div-container' style="height: 300px;">
+
+                            <div class="product-list">
+
+                                <div style="width: 80% !important;" class='product bag-category' t-foreach="bags || []"
+                                     t-as="o"
+                                     t-key="o.id" t-att-data-product-id="o.id" t-on-click="click_on_bag_product">
+
+                                    <div class="product-img" style="width: 30%;height: 30%;">
+                                        <img t-att-src='o.pos_bag_charges_img_url' alt="Product image"/>
+                                        <span class="price-tag">
+                                            <t t-esc="env.pos.format_currency(o.bag_price,'Product Price')"/>
+                                         </span>
+                                    </div>
+
+                                    <div class="product-name">
+                                            <t t-esc="o.name"/>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <footer class="footer">
+                        <div class="button cancel odoo-theme-button" t-on-click="cancel">
+                            Close
+                        </div>
+                    </footer>
+                </div>
+            </Draggable>
+        </div>
+    </t>
+
+</templates>

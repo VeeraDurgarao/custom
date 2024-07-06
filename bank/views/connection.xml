@@ -30,7 +30,7 @@
        </field>
        <field name="model">res.config.settings</field>
        <field name="inherit_id"
-              ref="point_of_sale.res_config_settings_view_form"/>
+              ref="sale.res_config_settings_view_form"/>
        <field name="arch" type="xml">
            <xpath expr="//setting[@id='variant_options']"
                   position="before">
@@ -42,10 +42,10 @@
 <!--                   invisible="not group_discount_per_so_line"-->
                    <field name="is_discount_limit"/>
                    <div class="content-group"
-                        >
-<!--                       invisible="not is_discount_limit"-->
+                       invisible="not is_discount_limit" >
+
                        <div class="mt16">
-                           <label for="discount_limit"/>
+                           <label for="is_discount_limit"/>
                            <field name="discount_limit"/>
                        </div>
                    </div>
@@ -117,6 +117,8 @@
 <!--            <field name="domain">[('customer_rank','&gt;', 0)]</field>-->
             <field name="view_mode">tree,form</field>
         </record>
+
+
         <record id="connections_product_action_id" model="ir.actions.act_window">
             <field name="name">Connection</field>
             <field name="type">ir.actions.act_window</field>
@@ -151,6 +153,8 @@
          parent="hr_expense.menu_hr_expense_root"
                   name="HR Orders"
          />
+
+
 
     </data>
 </odoo>

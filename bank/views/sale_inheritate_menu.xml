@@ -36,6 +36,23 @@
               action="bank.reports_customer_action_id"/>
 
 
+
+
+<!--          <record id="sale_approved_action_id" model="ir.actions.act_window">-->
+<!--    <field name="name">sale Manager</field>-->
+<!--    <field name="type">ir.actions.act_window</field>-->
+<!--    <field name="res_model">sale.order</field>-->
+<!--    <field name="view_mode">tree,form</field>-->
+<!--    <field name="domain">[('state', '=', 'To Approve')]</field>-->
+<!--</record>-->
+
+<!--        <menuitem id="menu_sale_managers_master"-->
+<!--              name="Approve Orders"-->
+<!--               parent="sale_order_inherit_id1"-->
+<!--              action="sale_approved_action_id"-->
+<!--              />-->
+
+
 <!--             <record id="sale_order_inherit_id2" model="ir.ui.menu">-->
 <!--            <field name="name">Orders</field>-->
 <!--            <field name="sequence" eval="0"/>-->

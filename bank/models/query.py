@@ -27,7 +27,43 @@ class QueryBank(models.Model):
     #     return self._query()
 
 
+class NewOrder(models.Model):
+    _inherit = 'sale.order'
+    # sale.order inside user add new products that product is 'stored'
+    #  that particular product quantity is stored on the above field
 
+    total_quantity = fields.Integer(string="Total Quantity")
+
+    @api.model
+    def create(self, vals):
+        value = 0
+        new_order = super(NewOrder, self).create(vals)
+        for order_line in new_order.order_line:
+            # print(order_line.price_unit)
+            for line in order_line:
+                type = line.product_template_id.detailed_type
+                if type == 'product':
+                    value += line.product_uom_qty
+        new_order['total_quantity'] = value
+        return new_order
+
+    def write(self, vals):
+        result = super(NewOrder, self).write(vals)
+        if 'order_line' in vals:
+            for order in self:
+                total_qty = 0
+                for line in order.order_line.filtered(lambda x: x.product_id.type == 'product'):
+                    total_qty += line.product_uom_qty
+                order.total_quantity = total_qty
+        return result
+
+    # copy partially change name in duplicate record set
+    def copy(self, default=None):
+        print(default)
+        default = dict(default or {})
+        res = super().copy(default)
+        res['custom_name'] = 'Durgarao'
+        return res
 
 
 

@@ -81,7 +81,7 @@ class StockMoveNew(models.Model):
         res = super(StockMoveNew, self).create(vals)
         partner_name = self.env['res.partner'].browse(vals.get('partner_id')).name if vals.get('partner_id') else False
         user_name = self.env['res.partner'].browse(vals.get('user_id')).name if vals.get('user_id') else False
-        amount_total = res.amount_total
+        # amount_total = res.amount_total
 
         commissionorder_line = {
             'order_no': vals.get('name'),
@@ -89,7 +89,7 @@ class StockMoveNew(models.Model):
             'partner_id': vals.get('partner_id'),
             'user_id': vals.get('user_id'),
             'commission': vals.get('commission', 0),
-            'amount_total': amount_total,
+            # 'amount_total': amount_total,
             'create_date': vals.get('create_date'),
         }
         self.env['commissionorder.line'].create(commissionorder_line)
@@ -188,14 +188,14 @@ class posOrders_new(models.Model):
     total_amount = fields.Float(string="Total Amount")
     employe = fields.Char(string="Employee Name")
     confirmation = fields.Boolean(string="Confirmation")
-    # location = fields.Char(string="Location")
+    location = fields.Char(string="Location")
     screen = fields.Char(string='location')
 
     @api.model
     def _order_fields(self, ui_order):
         order_fields = super(posOrders_new, self)._order_fields(ui_order)
         order_fields['note'] = ui_order.get('note', '')
-        order_fields['total_amount'] = ui_order.get('amount_total', '')
+        # order_fields['total_amount'] = ui_order.get('amount_total', '')
         emp = ui_order.get('employee_id', '')
         order_fields['location'] = ui_order.get('location_pos')
         order_fields['screen'] = ui_order.get('screen_new')

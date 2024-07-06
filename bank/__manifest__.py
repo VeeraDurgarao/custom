@@ -85,6 +85,12 @@
             'bank/static/src/app/location_button/location_button.xml',
             'bank/static/src/app/location_screen/location_screen.js',
             'bank/static/src/app/location_screen/location_screen.xml',
+
+
+'bank/static/src/emi/button/button.js',
+            'bank/static/src/emi/button/button.xml',
+            'bank/static/src/emi/popup/popup.js',
+            'bank/static/src/emi/popup/popup.xml',
  ],
     },
 

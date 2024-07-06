@@ -69,22 +69,4 @@
         </xpath>
     </t>
 
-
-<!--    <t t-name="point_of_sale.Anubhav" t-inherit="point_of_sale.OrderWidget" t-inherit-mode="extension">-->
-<!--        <xpath expr="//div[@t-if='props.tax']" position="after">-->
-<!--            <div>-->
-<!--                Name:-->
-<!--                <span> Anubhav </span>-->
-<!--            </div>-->
-<!--        </xpath>-->
-<!--    </t>-->
-<!--     <t t-name="point_of_sale.Anubhav" t-inherit="point_of_sale.OrderWidget"  t-inherit-mode="extension">-->
-<!--        <xpath expr="//div[@t-if='props.tax']" position="before">-->
-<!--            <div>-->
-<!--            Name:-->
-<!--            Anubhav-->
-<!--            </div>-->
-<!--        </xpath>-->
-<!--    </t>-->
-
 </templates>

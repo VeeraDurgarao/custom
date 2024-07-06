@@ -60,14 +60,11 @@ class ResConfigSettings(models.TransientModel):
 
     is_discount_limit = fields.Boolean(
         string='Durgarao',
-
         help='Check this field for enabling discount limit'
     )
-    # config_parameter = 'sale_discount_limit.is_discount_limit'
     discount_limit = fields.Float(
-        string='Percentage',
-
-        help='The discount limit amount in percentage'
+        string='Value',
+        help='The discount limit amount in percentage' ,config_parameter = 'sale_discount_limit.is_discount_limit'
     )
     # config_parameter = 'sale_discount_limit.discount_limit',
     # @api.constrains('discount_limit')
@@ -79,11 +76,11 @@ class ResConfigSettings(models.TransientModel):
     Percentage = fields.Integer(string="Percentage", config_parameter='Percentage')
     location = fields.Many2many(string='Location',related='pos_config_id.location_ids',readonly=False)
 
-    @api.constrains('Percentage')
-    def limit(self):
-        for i in self:
-            if i.Percentage <= 0 or i.Percentage > 100:
-                raise ValidationError('Please enter below 100 percentage and above 0')
+    # @api.constrains('Percentage')
+    # def limit(self):
+    #     for i in self:
+    #         if i.Percentage <= 0 or i.Percentage > 100:
+    #             raise ValidationError('Please enter below 100 percentage and above 0')
 
 
     custom_field = fields.Many2one('res.partner',string="Custom Field")

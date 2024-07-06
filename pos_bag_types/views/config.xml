@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="res_config_settings_views_form_bag" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="point_of_sale.res_config_settings_view_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//block[@id='restaurant_section']" position="after">
+                <div class="col-12 col-lg-6 o_setting_box" id="bag_charges_ids">
+                    <div class="o_setting_right_pane">
+                        <label for="bag_charges_ids"/>
+                        <div class="text-muted">
+                           Allow Bag Charges Here
+                        </div>
+                        <div class="row mt16">
+                            <label for="bag_charges_ids" class="col-lg-4 o_light_label"/>
+                            <field name="bag_charges_ids" class="oe_inline" widget="many2many_tags"/>
+                        </div>
+                    </div>
+                </div>
+            </xpath>
+        </field>
+    </record>
+</odoo>
