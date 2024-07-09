@@ -23,6 +23,7 @@ class BankAccount(models.Model):
     choose_branch = fields.Many2one('button.model', string="Choose Branch")
     branch = fields.Char(string="Code",related="choose_branch.Branch_Code")
     seq = fields.Integer(string="Sequence")
+    active = fields.Boolean('Active', default=True)  # used for Archived
 
     @api.model
     def fun(self):

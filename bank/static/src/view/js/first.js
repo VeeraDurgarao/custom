@@ -1,48 +1,48 @@
-
-
-
-
-
-
-
-
-
-
-
-/** @odoo-module **/
-
-import { _t } from "@web/core/l10n/translation";
-import { ProductScreen } from "@point_of_sale/app/screens/product_screen/product_screen";
-import { useService } from "@web/core/utils/hooks";
-import { Component } from "@odoo/owl";
-import { usePos } from "@point_of_sale/app/store/pos_hook";
-import { BookOrderPopup } from "./BookOrderPopup";
-import { ErrorPopup } from "@point_of_sale/app/errors/popups/error_popup";
-
-
-export class BookDurgarao extends Component {
-    static template = "pos_book_order.Durgarao";
-    setup() {
-        this.pos = usePos();
-        this.popup = useService("popup");
-    }
-    async onClick() {
-            this.pos.popup.add(ErrorPopup, {
-                    title: _t("Please Select the Customer"),
-                    body: _t(
-                        "You need to select a customer for using this option"
-                    ),
-                });
-        }
-    }
-}
-
-ProductScreen.addControlButton({
-    component: BookDurgarao,
-    condition: function () {
-        return this.pos.config.enable;
-    },
-});
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+///** @odoo-module **/
+//
+//import { _t } from "@web/core/l10n/translation";
+//import { ProductScreen } from "@point_of_sale/app/screens/product_screen/product_screen";
+//import { useService } from "@web/core/utils/hooks";
+//import { Component } from "@odoo/owl";
+//import { usePos } from "@point_of_sale/app/store/pos_hook";
+//import { BookOrderPopup } from "./BookOrderPopup";
+//import { ErrorPopup } from "@point_of_sale/app/errors/popups/error_popup";
+//
+//
+//export class BookDurgarao extends Component {
+//    static template = "pos_book_order.Durgarao";
+//    setup() {
+//        this.pos = usePos();
+//        this.popup = useService("popup");
+//    }
+//    async onClick() {
+//            this.pos.popup.add(ErrorPopup, {
+//                    title: _t("Please Select the Customer"),
+//                    body: _t(
+//                        "You need to select a customer for using this option"
+//                    ),
+//                });
+//        }
+//    }
+//
+//
+//ProductScreen.addControlButton({
+//    component: BookDurgarao,
+//    condition: function () {
+//        return this.pos.config.enable;
+//    },
+//});
 
 
 

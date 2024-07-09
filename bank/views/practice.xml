@@ -18,6 +18,10 @@
                     <sheet>
                         <group>
                         <group>
+                            <field name="durgarao"
+                               widget="res_partner_many2one"
+                               context="{'res_partner_search_mode': 'customer', 'show_address': 1, 'show_vat': True}"
+                               placeholder="Type to find a customer..."/>
                             <field name="customer"/>
                             <field name="customer_details"/>
                             <field name="partner_name"/>

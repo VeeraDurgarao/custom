@@ -31,6 +31,7 @@ class scheduleActions(models.Model):
     # amount = fields.Integer(string="Amount")
     ref_no = fields.Text(string="Ref No", readonly=True, default=lambda self: _('NEW'))
     interest = fields.Integer(string="Interest")
+    durgarao = fields.Many2one('res.partner',string="Durgarao")
 
     def get_discount(self):
         param_obj = self.env['ir.config_parameter'].sudo()

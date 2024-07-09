@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="tmp_form_data" name="Stock Details">
+        <t t-call="website.layout">
+            <div id="wrap">
+                <div class="container">
+                    <div class="col-md-12">
+                        <form action="/bank/form/thankyou" enctype="multipart/form-data" method="POST">
+                            <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                            <div class="form-group">
+                                <label for="gender">Title</label>
+                                <select name="gender" id="gender">
+                                    <option value=""> </option>
+                                    <option value="mr">Mr.</option>
+                                    <option value="ms">Ms.</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="first_name">First Name</label>
+                                <input type="text" class="form-control" name="first_name" id="first_name"
+                                       required="true" t-att-value="first_name"/>
+                            </div>
+                            <div class="form-group">
+                                <label for="dob">Date Of Birth</label>
+                                <input type="date" class="form-control" name="dob"
+                                       id="dob" required="true"/>
+                            </div>
+                            <div class="form-group">
+                                <label for="mobile_number">Mobile Number</label>
+                                <input type="number" class="form-control" name="mobile_number"
+                                       id="mobile_number" required="true"/>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" class="form-control" name="email"
+                                       id="email" required="true"/>
+                            </div>
+                            <div class="form-group">
+                                <label for="email_sent">Email Sent</label>
+                                <input type="checkbox" class="form-control" name="email_sent"
+                                       id="email_sent" required="true"/>
+                            </div>
+                             <div class="form-group">
+                                <label for="user_id" class="control-label">User</label>
+                               <select name="user_id" class="form-control list-style">
+                                   <t t-foreach="records" t-as="rd">
+                                       <option t-esc="rd.name" t-att-value="rd.id"/>
+                                   </t>
+                               </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="upload_document">Attachment</label>
+                                <input type="file" class="form-control" name="upload_document"
+                                       id="upload_document" required="true"/>
+                            </div>
+
+
+                            <a href="/bank/form/thankyou">
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </a>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </t>
+    </template>
+
+    <template id="template_market_form_submit" name="Customer Form Successfully Submitted">
+        <t t-call="website.layout">
+            <div id="wrap">
+                <div class="container">
+                    <div class="col-md-12">
+                        <div class="alert alert-success">
+                            <h2>ThankYou</h2>
+                        </div>
+                    </div>
+                </div>
+                <a t-attf-href="#{stocks.id}">
+                    <t t-esc="stocks.name"/>
+                </a>
+            </div>
+        </t>
+    </template>
+</odoo>

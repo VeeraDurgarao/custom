@@ -45,6 +45,7 @@ export class BookOrderButton extends Component {
     }
 }
 
+
 ProductScreen.addControlButton({
     component: BookOrderButton,
     condition: function () {

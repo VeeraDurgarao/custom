@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="temporary_data" name="Sale Details">
+        <t t-call="website.layout">
+<!--             <div id="wrap">-->
+<!--                <div class="container">-->
+<!--                    <div class="col-md-12">-->
+<!--                        <form action="/market/form/thankyou" enctype="multipart/form-data" method="POST">-->
+<!--                            <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>-->
+<!--                            <div class="form-group">-->
+<!--                                <label for="gender">Title</label>-->
+<!--                                <select name="gender" id="gender">-->
+<!--                                    <option value=""> </option>-->
+<!--                                    <option value="mr">Mr.</option>-->
+<!--                                    <option value="ms">Ms.</option>-->
+<!--                                </select>-->
+<!--                            </div>-->
+<!--                            <div class="form-group">-->
+<!--                                <label for="first_name">First Name</label>-->
+<!--                                <input type="text" class="form-control" name="first_name" id="first_name"-->
+<!--                                       required="true" t-att-value="first_name"/>-->
+<!--                            </div>-->
+<!--                            <div class="form-group">-->
+<!--                                <label for="dob">Date Of Birth</label>-->
+<!--                                <input type="date" class="form-control" name="dob"-->
+<!--                                       id="dob" required="true"/>-->
+<!--                            </div>-->
+<!--                            <div class="form-group">-->
+<!--                                <label for="mobile_number">Mobile Number</label>-->
+<!--                                <input type="number" class="form-control" name="mobile_number"-->
+<!--                                       id="mobile_number" required="true"/>-->
+<!--                            </div>-->
+<!--                            <div class="form-group">-->
+<!--                                <label for="email">Email</label>-->
+<!--                                <input type="email" class="form-control" name="email"-->
+<!--                                       id="email" required="true"/>-->
+<!--                            </div>-->
+<!--                            <div class="form-group">-->
+<!--                                <label for="email_sent">Email Sent</label>-->
+<!--                                <input type="checkbox" class="form-control" name="email_sent"-->
+<!--                                       id="email_sent" required="true"/>-->
+<!--                            </div>-->
+<!--                             <div class="form-group">-->
+<!--                                <label for="user_id" class="control-label">User</label>-->
+<!--                               <select name="user_id" class="form-control list-style">-->
+<!--                                   <t t-foreach="records" t-as="rd">-->
+<!--                                       <option t-esc="rd.name" t-att-value="rd.id"/>-->
+<!--                                   </t>-->
+<!--                               </select>-->
+<!--                            </div>-->
+<!--                            <div class="form-group">-->
+<!--                                <label for="upload_document">Attachment</label>-->
+<!--                                <input type="file" class="form-control" name="upload_document"-->
+<!--                                       id="upload_document" required="true"/>-->
+<!--                            </div>-->
+
+
+<!--                            <a href="/market/form/thankyou">-->
+<!--                                <button type="submit" class="btn btn-primary">Submit</button>-->
+<!--                            </a>-->
+<!--                        </form>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+            <div class="oe_structure">
+                <div class="container">
+                    <br/>
+                    <center>
+                        <h3>Sale Management</h3>
+                    </center>
+                    <br/>
+                    <table style="font-family: arial, sans-serif;width: 100%;">
+                        <thead>
+                            <tr>
+                                <h6>
+                                    <b>
+                                        <th style="text-align: left;padding: 8px;">Customer Name</th>
+                                        <th style="text-align: left;padding: 8px;">Sequence Number</th>
+                                        <th style="text-align: left;padding: 8px;">Sale Person</th>
+                                        <th style="text-align: left;padding: 8px;">Total amount</th>
+                                    </b>
+                                </h6>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <t t-foreach="records" t-as="o">
+                                <tr>
+                                    <td style="text-align: left;padding: 8px;">
+                                        <a t-attf-href="#{ o.id }">
+                                            <span t-esc="o.partner_id.name"/>
+                                        </a>
+                                    </td>
+                                    <td style="text-align: left;padding: 8px;">
+                                        <span t-esc="o.name"/>
+                                    </td>
+                                    <td style="text-align: left;padding: 8px;">
+                                        <span t-esc="o.user_id.name"/>
+                                    </td>
+                                    <td style="text-align: left;padding: 8px;">
+                                        <span t-esc="o.amount_total"/>
+                                    </td>
+                                </tr>
+                            </t>
+                        </tbody>
+<!--                                    <td>-->
+<!--                                        <a t-attf-href="/market/form/edit/#{o.id}">-->
+<!--                                            <button type="submit" class="btn btn-outline-success"><i class="fa fa-edit"></i>Edit-->
+<!--                                            </button>-->
+<!--                                        </a>-->
+<!--                                    </td>-->
+<!--                                    <td>-->
+<!--                                        <a t-attf-href="/market/form/delete/#{o.id}">-->
+<!--                                            <button type="submit" class="btn btn-outline-danger"><i class="fa fa-trash"></i>Delete-->
+<!--                                            </button>-->
+<!--                                        </a>-->
+<!--                                    </td>-->
+<!--                                    <td>-->
+<!--                                        <a t-attf-href="/market/form/download/attachment/#{o.id}">-->
+<!--                                            <button type="submit" class="btn btn-outline-secondary"><i class="fa fa-download"></i>Download-->
+<!--                                            </button>-->
+<!--                                        </a>-->
+<!--                                    </td>-->
+<!--                                    <td>-->
+<!--                                        <div class="o_download_pdf btn-toolbar flex-sm-nowrap">-->
+<!--                                            <div>-->
+<!--                                                <a role="button" class="btn btn-secondary flex-grow-1 mb-1 createButton"-->
+<!--                                                   data-toggle="modal"-->
+<!--                                                   id='myModal' data-target="#investorpopup" href="#">-->
+<!--                                                    <t>Accept and sign In</t>-->
+<!--                                                </a>-->
+<!--                                            </div>-->
+<!--                                        </div>-->
+<!--                                        <form method="post">-->
+<!--                                            <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>-->
+<!--                                            <div id="investorpopup" class="modal fade">-->
+<!--                                                <div class="modal-dialog modal-content"-->
+<!--                                                     style="border:solid 2px white; min-height:200px;max-width:800px;margin-top:10px">-->
+<!--                                                    <div class="modal-body" id="pop_html">-->
+<!--                                                        <a href="#"-->
+<!--                                                           class="o_popup_btn_close o_not_editable o_default_snippet_text pull-right"-->
+<!--                                                           data-dismiss="modal" style="font-size:30px">×-->
+<!--                                                        </a>-->
+<!--                                                        <br/>-->
+<!--                                                        <div style="margin-top:-48px">-->
+<!--                                                            <h2 style="text-align:center; font-size 18px; font-weight:bold"-->
+<!--                                                                class="o_default_snippet_text">-->
+<!--                                                                Investor Portfolio-->
+<!--                                                            </h2>-->
+<!--                                                        </div>-->
+<!--                                                        <br></br>-->
+<!--                                                        <div class="form-group row form-field">-->
+<!--                                                            <div class="col-lg-3 col-md-4">-->
+<!--                                                                <label class="col-form-label" for="dealer_contact">First-->
+<!--                                                                    Name-->
+<!--                                                                </label>-->
+<!--                                                            </div>-->
+<!--                                                            <div class="col-lg-7 col-md-8">-->
+<!--                                                                <input id="first_name" type="text" required="True"-->
+<!--                                                                       class="form-control o_website_form_input"-->
+<!--                                                                       name="first_name" t-att-value="o.first_name"/>-->
+<!--                                                            </div>-->
+<!--                                                            <div class="col-lg-7 col-md-8">-->
+<!--                                                                <input id="stock_id" type="hidden" required="True"-->
+<!--                                                                       class="form-control o_website_form_input"-->
+<!--                                                                       name="stock_id" t-att-value="o.id"/>-->
+<!--                                                            </div>-->
+<!--                                                        </div>-->
+<!--                                                        <div class="form-group row form-field">-->
+<!--                                                            <div style="padding:0 45% 0 45%">-->
+<!--                                                                <button type="submit" id="warranty_submit"-->
+<!--                                                                     onClick="window.location.reload()"   class="o_website_form_send btn btn-primary">-->
+<!--                                                                    Submit-->
+<!--                                                                </button>-->
+<!--                                                            </div>-->
+<!--                                                        </div>-->
+<!--                                                    </div>-->
+<!--                                                </div>-->
+<!--                                            </div>-->
+<!--                                        </form>-->
+
+<!--                                    </td>-->
+<!--                                </tr>-->
+
+<!--                            </t>-->
+<!--                        </tbody>-->
+                    </table>
+                    <a href="/market/form/create">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </a>
+                </div>
+            </div>
+        </t>
+    </template>
+</odoo>

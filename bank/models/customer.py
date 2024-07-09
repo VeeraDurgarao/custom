@@ -12,7 +12,7 @@ class BankCustomer(models.Model):
     assets = fields.Integer(string='assets')
     dob = fields.Date(string="DOB")
     # assigned_emp = fields.Many2one('employee.bank', string="Assigned employee")
-    Loans_List = fields.Many2many(comodel_name='bank.loan', string='Loans List', domain=[('duration', '>', '12')])
+    Loans_List = fields.Many2many(comodel_name='bank.loan', string='Loans List', domain=[('duration', '>', '12'), ])
     image = fields.Binary(string='Image')
     status = fields.Selection([("done", 'Done'), ("draft", "Draft")], string="Status", default="draft")
 
