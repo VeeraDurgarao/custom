@@ -1,7 +1,7 @@
 import xmlrpc.client
 
 url = 'http://192.168.10.178:8017'
-db = 'practice'
+db = 'durgarao'
 username = 'admin'
 password = 'admin'
 
@@ -18,16 +18,18 @@ else:
 # Object Proxy to interact with models
 models = xmlrpc.client.ServerProxy('{}/xmlrpc/2/object'.format(url))
 
-try:
-    loan_ids = models.execute_kw(db, uid, password, 'bank.account', 'search', [[]])
-    print("Loan IDs:", loan_ids)
-    id = models.execute_kw(db, uid, password, 'bank.account', 'write', [[[46],{'age':25}]])
-    # id = models.execute_kw(db, uid, password, 'bank.transaction', 'unlink', [[8]])
-    print(id)
-    # for i in loan_ids:
-    #     # id = models.execute_kw(db, uid, password, 'school.profile', 'write', [[i], {'email': 'hp@gmail.com'}])
-    #     id = models.execute_kw(db, uid, password, 'school.profile', 'unlink', [[i]])
-    #     print(id)
+# try:
+    # loan_ids = models.execute_kw(db, uid, password, 'room.info', 'search', [[]])
+    # value = models.execute_kw(db, uid, password, 'bank.transaction', 'search', [[]])
+    # print(value)
+    # print("Loan IDs:", loan_ids)
+    # id = models.execute_kw(db, uid, password, 'room.info', 'write', [[[],{'age':25}]])
+    # id = models.execute_kw(db, uid, password, 'bank.transaction', 'search', [[]])
+    # print(id)
+    # for i in value:
+        # id = models.execute_kw(db, uid, password, 'room.info', 'write', [[i], {'floor_number': 123456}])
+        # id = models.execute_kw(db, uid, password, 'school.profile', 'unlink', [[i]])
+        # print(id)
     # for i in loan_ids:
     #     id = models.execute_kw(db, uid, password, 'school.profile', 'write', [[[3], {'email': 'hp@gmail.com'}]])
     #     print(id)
@@ -117,5 +119,5 @@ try:
     # print("search result:",value1)
     # print(value2)
     # print(len(value1))
-except xmlrpc.client.Fault as error:
-    print("XML-RPC Fault:", error)
+# except xmlrpc.client.Fault as error:
+#     print("XML-RPC Fault:", error)

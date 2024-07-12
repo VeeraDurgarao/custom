@@ -3,6 +3,7 @@ import { ListController } from "@web/views/list/list_controller";
 import { listView } from "@web/views/list/list_view";
 import { registry } from "@web/core/registry";
 
+// this code i try to add one button inside manifest module by using below code
 
 class jsClassModelManifest extends ListController {
     actionManifestList() {

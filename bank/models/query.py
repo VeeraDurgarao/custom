@@ -34,10 +34,19 @@ class NewOrder(models.Model):
 
     total_quantity = fields.Integer(string="Total Quantity")
 
+    # def get_views(self, views, options=None):
+    #     if self.check_access_rights('read', raise_exception=False):
+    #         return super().get_views(views, options)
+    #     res = self.env['hr.employee.public'].get_views(views, options)
+    #     res['models'].update({'hr.employee': res['models']['hr.employee.public']})
+    #     return res
+
     @api.model
     def create(self, vals):
+        # print(self)
         value = 0
         new_order = super(NewOrder, self).create(vals)
+        # print(self)
         for order_line in new_order.order_line:
             # print(order_line.price_unit)
             for line in order_line:
@@ -48,7 +57,9 @@ class NewOrder(models.Model):
         return new_order
 
     def write(self, vals):
+        # print(self)
         result = super(NewOrder, self).write(vals)
+        # print(result)
         if 'order_line' in vals:
             for order in self:
                 total_qty = 0

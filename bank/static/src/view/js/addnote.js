@@ -20,6 +20,7 @@ export class CustomerNoteButton extends Component {
 
 
     async onClick() {
+    // in this code whenever user enter any data inside note it is stored in backed and all orders after one line
        const order = this.pos.get_order();
          const orderLines = this.pos.get_order().get_orderlines();
         if (!orderLines) {
