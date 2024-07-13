@@ -39,7 +39,7 @@
              'views/configure.xml',
              'views/location.xml',
              'views/controllers_practice.xml',
-             # 'views/form_user.xml',
+             'views/form_user.xml',
              ],
     'assets': {
         'web.assets_backend': [
