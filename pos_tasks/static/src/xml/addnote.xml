@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+    <t t-name="point_of_sale.addNotes">
+        <button class="btn-light rounded-0 fw-bolder" t-on-click="() => this.onClick()">
+            <span>AddNote</span>
+        </button>
+    </t>
+</templates>

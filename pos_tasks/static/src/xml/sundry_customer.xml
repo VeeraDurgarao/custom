@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+<t t-name="point_of_sale.SundryCustomerInside" t-inherit="point_of_sale.PartnerListScreen" t-inherit-mode="extension">
+        <xpath expr="//div[hasclass('search-bar-container')]" position="after">
+                <button class="py-3 btn-outline-success" t-on-click="click">
+ <div class="d-flex justify-content-center align-items-center ">
+                    <span class="p-2 rounded-circle me-2 text-bg-dark" t-if="!ui.isSmall">
+                        <i class="fa fa-user" role="img" aria-label="Customer" title="Customer"/>
+                    </span>
+            <div>
+                SundryCustomer
+                </div>
+
+            </div>
+                </button>
+        </xpath>
+    </t>
+</templates>

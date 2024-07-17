@@ -61,6 +61,5 @@ class StockPicking(models.Model):
         if view_type == 'form' and not(user_group):
             for node in arch.xpath("//field"):
                 node.set('readonly', '1')
-
         return arch, view
 

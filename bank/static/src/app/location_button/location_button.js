@@ -81,7 +81,6 @@ static template = 'custom_pos_screen.ProductCombosButton';
        return;
     }
        var self = this
-       //connection.py python file using
        await this.orm.call("pos.config","get_locations",['true'],{}
        ).then(function(result) {
        console.log(result);

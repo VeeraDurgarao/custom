@@ -5,7 +5,7 @@
             <div class="container">
                 <h2 class="text-center">Home Page</h2>
                 <div>
-                    <img src="/bank/static/src/img/download.png" style="width:100% height:70%" alt="Image"/>
+                    <img src="/bank/static/src/img/download.png" style="height:70%;" alt="Image"/>
                     <br/>
                     <hr/>
                 </div>
@@ -15,7 +15,7 @@
                         <tr>
                             <th>Name</th>
                             <th>Email</th>
-                            <th>password</th>
+                            <th>Password</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -35,35 +35,31 @@
                             <td>anubhav</td>
                         </tr>
                         <tr>
-                            <td>swarup</td>
+                            <td>Swarup</td>
                             <td>swarup@gmail.com</td>
                             <td>swarup</td>
                         </tr>
-
                     </tbody>
                 </table>
                 <br/>
                 <hr/>
                 <h3>Login Form</h3>
-                <form action="/odoo/form_submit" method="post">
+                <form method="post" action="/odoo/form_submit" class="login-form">
                     <div class="form-group">
-                        <!--                    <label for="name">Name:</label>-->
-                        <!--                    <input type="text" id="name" name="name" class="form-control"/>-->
-                        <label for="name">Email:</label>
-                        <input type="text" id="name" name="name" class="form-control"/>
-                        <label for="name">Password:</label>
-                        <input type="text" id="name" name="name" class="form-control"/>
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" class="form-control"/>
                     </div>
-
-
-                    <button type="submit" class="btn btn-primary">Submit</button>
-
-                    <br/>
+                    <div class="form-group">
+                        <label for="password">Password:</label>
+                        <input type="password" id="password" name="password" class="form-control"/>
+                    </div>
+                    <button type="submit" class="o_subtitle btn btn-primary">Submit</button>
                 </form>
+                <br/>
+                <button class="o_button btn btn-primary">Durgarao</button>
             </div>
         </t>
     </template>
-
     <template id="template_form_submit" name="Customer Form Successfully Submitted">
         <t t-call="website.layout">
             <div class="alert alert-success">

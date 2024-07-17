@@ -57,7 +57,7 @@
             'bank/static/src/view/xml/custome_module_button.xml',
             # 'bank/static/src/view/xml/custom_controller.xml',
             'bank/static/src/view/xml/temp123.xml',
-'bank/static/src/view/js/public_widget.js',
+
             'bank/static/src/view/xml/js_template.xml',
 
 
@@ -65,7 +65,7 @@
         'web.assets_frontend': [
             'bank/static/src/view/js/purchases_example.js',
             # 'bank/static/src/view/js/first.js',
-            # 'bank/static/src/view/js/widget.js',
+            'bank/static/src/view/js/widget.js',
         ],
 
  'point_of_sale._assets_pos': [
@@ -83,7 +83,7 @@
      # 'bank/static/src/view/xml/custom_button_popup.xml',
 
 
-'bank/static/src/app/location_button/location_button.js',
+            'bank/static/src/app/location_button/location_button.js',
             'bank/static/src/app/location_button/location_button.xml',
             'bank/static/src/app/location_screen/location_screen.js',
             'bank/static/src/app/location_screen/location_screen.xml',
