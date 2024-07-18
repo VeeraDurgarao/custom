@@ -1,0 +1,44 @@
+<odoo>
+
+    <data>
+           <record id="view_private_user" model="ir.ui.view">
+            <field name="name">form_user_form_views</field>
+            <field name="model">private.user</field>
+            <field name="arch" type="xml">
+                <form string="Private User">
+                    <sheet>
+                        <group>
+                                <field name="name"/>
+                                <field name="email"/>
+                                <field name="password"/>
+                            </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_private_user_tree" model="ir.ui.view">
+            <field name="name">private.user</field>
+            <field name="model">private.user</field>
+            <field name="arch" type="xml">
+                <tree string="Private User Tree">
+                    <field name="name"/>
+                     <field name="email"/>
+                     <field name="password"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="private_user_action_id" model="ir.actions.act_window">
+            <field name="name">Private User</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">private.user</field>
+            <field name="view_mode">tree</field>
+        </record>
+        <menuitem id="menu_private_master"
+              name="Private User"
+              parent="menu_user_master"
+              action="private_user_action_id"
+              />
+    </data>
+</odoo>

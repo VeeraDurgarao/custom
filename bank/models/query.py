@@ -45,8 +45,9 @@ class NewOrder(models.Model):
     def create(self, vals):
         # print(self)
         value = 0
+        print("<<<<<<<<<<<<<<<<<<<<<<<<<",vals)
         new_order = super(NewOrder, self).create(vals)
-        # print(self)
+        print(vals)
         for order_line in new_order.order_line:
             # print(order_line.price_unit)
             for line in order_line:
@@ -75,6 +76,7 @@ class NewOrder(models.Model):
         res = super().copy(default)
         res['custom_name'] = 'Durgarao'
         return res
+
 
 
 

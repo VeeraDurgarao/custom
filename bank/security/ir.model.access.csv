@@ -22,4 +22,5 @@ bank.access_reports_customer,access_reports_customer,bank.model_reports_customer
 bank.access_practice_model,access_practice_model,bank.model_practice_model,base.group_user,1,1,1,0
 bank.access_res_location,access_res_location,bank.model_res_location,base.group_user,1,1,1,1
 
-
+bank.access_public_user,access_public_user,bank.model_public_user,base.group_user,1,1,1,1
+bank.access_private_user,access_private_user,bank.model_private_user,base.group_user,1,1,1,1

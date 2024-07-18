@@ -1,0 +1,49 @@
+<odoo>
+    <data>
+        <record id="view_public_user" model="ir.ui.view">
+            <field name="name">public_user_form_views</field>
+            <field name="model">public.user</field>
+            <field name="arch" type="xml">
+                <form string="Public User">
+                    <sheet>
+                        <group>
+                                <field name="name"/>
+                                <field name="email"/>
+                                <field name="password"/>
+                            </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_public_user_tree" model="ir.ui.view">
+            <field name="name">public.user</field>
+            <field name="model">public.user</field>
+            <field name="arch" type="xml">
+                <tree string="Public User Tree">
+                    <field name="name"/>
+                     <field name="email"/>
+                     <field name="password"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="public_user_action_id" model="ir.actions.act_window">
+            <field name="name">Public User</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">public.user</field>
+            <field name="view_mode">tree</field>
+        </record>
+
+        <menuitem id="menu_user_master"
+              name="Users"
+              parent="menu_bank_root"
+              />
+        <menuitem id="menu_public_master"
+              name="Public User"
+              parent="menu_user_master"
+              action="public_user_action_id"
+              />
+    </data>
+
+</odoo>

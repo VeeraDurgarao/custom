@@ -15,6 +15,7 @@ from . import planning_slot
 from . import connection
 from . import configure
 from . import location
+from . import public_user
 
 
 
