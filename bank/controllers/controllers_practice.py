@@ -53,14 +53,14 @@ class SaleOrderController(http.Controller):
 
 #in this code is return all orders inside the sale.orders by using api controllers it is showing on website
 
-#     @http.route('/bank/create_sale_order/', type='http', auth="public", website=True)
-#     def patient_app_data(self, **post):
-#         # return http.request.render("bank.temporary_data",{})
-#         appointment_data = request.env['sale.order'].sudo().search([])
-#         appointmentss = {
-#             'records': appointment_data,
-#         }
-#         return http.request.render("bank.temporary_data", appointmentss)
+    # @http.route('/bank/create_sale_order/', type='http', auth="public", website=True)
+    # def patient_app_data(self, **post):
+    #     # return http.request.render("bank.temporary_data",{})
+    #     appointment_data = request.env['sale.order'].sudo().search([])
+    #     appointmentss = {
+    #         'records': appointment_data,
+    #     }
+    #     return http.request.render("bank.temporary_data", appointmentss)
 
 # controllers/main.py
 # from odoo import http

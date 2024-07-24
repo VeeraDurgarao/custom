@@ -50,16 +50,16 @@ class StockMoveImage(models.Model):
 from odoo import models, api
 
 
-class StockPicking(models.Model):
-    _inherit = "sale.order"
-
-    @api.model
-    def _get_view(self, view_id=None, view_type='form', **options):
-        arch, view = super(StockPicking, self)._get_view(view_id, view_type, **options)
-        current_user = self.env.user
-        user_group = current_user.has_group('sales_approval.group_sale_manager_record_access')
-        if view_type == 'form' and not(user_group):
-            for node in arch.xpath("//field"):
-                node.set('readonly', '1')
-        return arch, view
+# class StockPicking(models.Model):
+#     _inherit = "sale.order"
+#
+#     @api.model
+#     def _get_view(self, view_id=None, view_type='form', **options):
+#         arch, view = super(StockPicking, self)._get_view(view_id, view_type, **options)
+#         current_user = self.env.user
+#         user_group = current_user.has_group('sales_approval.group_sale_manager_record_access')
+#         if view_type == 'form' and not(user_group):
+#             for node in arch.xpath("//field"):
+#                 node.set('readonly', '1')
+#         return arch, view
 

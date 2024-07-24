@@ -10,3 +10,4 @@ class publicUser(models.Model):
 class formUser(models.Model):
     _name = 'private.user'
     _inherit = "public.user"
+

@@ -38,10 +38,11 @@
              'views/connection.xml',
              'views/configure.xml',
              'views/location.xml',
-             'views/controllers_practice.xml',
+             # 'views/controllers_practice.xml',
              'views/form_user.xml',
              'views/public_users.xml',
              'views/private_user.xml',
+             'views/website_snippets.xml',
              ],
     'assets': {
         'web.assets_backend': [
@@ -68,6 +69,7 @@
             'bank/static/src/view/js/purchases_example.js',
             # 'bank/static/src/view/js/first.js',
             'bank/static/src/view/js/widget.js',
+
         ],
 
  'point_of_sale._assets_pos': [

@@ -20,11 +20,21 @@
                             <field name="seq_no"/>
                         </h1>
                     </div>
+
+
                     <sheet>
+                           <div class="oe_title">
+                                    <h1 style="white-space: nowrap;">
+                                        <field class="text-break" options="{'line_breaks': False}" widget="text"
+                                               name="name" placeholder="e.g. Product Pricing"/>
+                                    </h1>
+                                </div>
                         <group>
+
                             <group>
 
                                 <field name="name"/>
+
                                 <field name="email"/>
                                 <field name="account_number"/>
                                 <field name="mobile"/>
@@ -68,6 +78,7 @@
                 <tree string="Recycle">
                     <field name="seq_no"/>
                     <field name="name"/>
+
                     <field name="email"/>
                     <field name="account_number"/>
                     <field name="mobile"/>
@@ -106,32 +117,32 @@
                        position="after">
                     <field name="note"/>
                     <field name="total_amount"/>
-<!--                    <field name="location"/>popup code-->
+                    <!--                    <field name="location"/>popup code-->
                     <field name="screen"/>
                 </xpath>
 
             </field>
         </record>
 
-         <record id="pos_order_form_new" model="ir.ui.view">
-        <field name="name">pos.order</field>
-        <field name="model">pos.order</field>
-        <field name="inherit_id" ref="point_of_sale.view_pos_pos_form" />
-        <field name="arch" type="xml">
-             <xpath expr="//notebook" position="inside">
+        <record id="pos_order_form_new" model="ir.ui.view">
+            <field name="name">pos.order</field>
+            <field name="model">pos.order</field>
+            <field name="inherit_id" ref="point_of_sale.view_pos_pos_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//notebook" position="inside">
 
-                <page string="Total">
-                    <group>
-                    <field name="total_amount"/>
-                    <field name="employe"/>
-                    <field name="confirmation"/>
+                    <page string="Total">
+                        <group>
+                            <field name="total_amount"/>
+                            <field name="employe"/>
+                            <field name="confirmation"/>
 
-                    </group>
+                        </group>
                     </page>
 
-            </xpath>
-        </field>
-    </record>
+                </xpath>
+            </field>
+        </record>
 
         <record id="_stock_form_view" model="ir.ui.view">
             <field name="name">stock.picking.form.view</field>
@@ -145,17 +156,17 @@
             </field>
         </record>
 
-<!--                <record id="_sale_order_line_form_view" model="ir.ui.view">-->
-<!--                    <field name="name">sale.order.line.form.view</field>-->
-<!--                    <field name="model">sale.order</field>-->
-<!--                    <field name="inherit_id" ref="sale.view_order_form"/>-->
-<!--                    <field name="arch" type="xml">-->
-<!--                        <xpath expr="//notebook/page[@name='order_lines']/field[@name='order_line']/tree/field[@name='tax_id']"-->
-<!--                               position="after">-->
-<!--                            <field name="extra"/>-->
-<!--                        </xpath>-->
-<!--                    </field>-->
-<!--                </record>-->
+        <!--                <record id="_sale_order_line_form_view" model="ir.ui.view">-->
+        <!--                    <field name="name">sale.order.line.form.view</field>-->
+        <!--                    <field name="model">sale.order</field>-->
+        <!--                    <field name="inherit_id" ref="sale.view_order_form"/>-->
+        <!--                    <field name="arch" type="xml">-->
+        <!--                        <xpath expr="//notebook/page[@name='order_lines']/field[@name='order_line']/tree/field[@name='tax_id']"-->
+        <!--                               position="after">-->
+        <!--                            <field name="extra"/>-->
+        <!--                        </xpath>-->
+        <!--                    </field>-->
+        <!--                </record>-->
 
         <record id="_stock_move_form_view" model="ir.ui.view">
             <field name="name">stock.move.form.view</field>

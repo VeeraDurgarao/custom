@@ -7,7 +7,7 @@
                 <form string="customer">
                     <header>
 
-
+ <button name="action_approve" string="Approve" type="object" class="btn-primary"/>
                         <button string="SearchRead" class="oe_highlight" type="object" name="searchRead" data-hotkey="q"/>
                         <button string="readGroup" class="oe_highlight" type="object" name="readGroup" data-hotkey="q"/>
                         <button string="filter123" class="oe_highlight" type="object" name="filter" data-hotkey="q"/>
@@ -34,7 +34,7 @@
                             <field name="status"/>
                             <field name="Contact"/>
                             <field name="Branch_Code"/>
-<!--                            <field name="branch"/>-->
+                            <field name="status"/>
                         </group>
                     </sheet>
                 </form>

@@ -18,6 +18,14 @@ class Button(models.Model):
     ], string="Status")
     # signature = fields.Binary(string='Signature')
     ref_no = fields.Text(string="Ref No", readonly=True, default=lambda self: _('NEW'))
+    state = fields.Selection([
+        ('approve', 'Approve'),
+        ('wait', 'Wait'),
+        ('reject', 'Reject'),
+    ], default='wait')
+
+    def action_approve(self):
+        self.write({'state': 'approve'})
 
 
 

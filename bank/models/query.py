@@ -32,7 +32,7 @@ class NewOrder(models.Model):
     # sale.order inside user add new products that product is 'stored'
     #  that particular product quantity is stored on the above field
 
-    total_quantity = fields.Integer(string="Total Quantity")
+    total_quantity = fields.Integer(string="Total Quantity",tracking=True)
 
     # def get_views(self, views, options=None):
     #     if self.check_access_rights('read', raise_exception=False):

@@ -1,0 +1,62 @@
+<odoo>
+    <data>
+        <record id="view_new_model_form" model="ir.ui.view">
+            <field name="name">new.model.form.views</field>
+            <field name="model">new.model</field>
+            <field name="arch" type="xml">
+                <form string="Names">
+                    <sheet>
+                        <group>
+                            <field name="model_id1"/>
+<!--                            <field name="filter_field1"/>-->
+<!--                            <field name="modules"/>-->
+                            <field name="filter_fields"
+                       options='{"no_open": True, "no_create": True}'
+                       domain="[('model', '=', model_id1)]"/>
+
+                        </group>
+                    </sheet>
+                    <notebook>
+                        <page name="Line">
+                            <field name="relation_field">
+                                <tree editable="bottom">
+<!--                                     <field name="new"/>-->
+                                     <field name="many_to_one"/>
+                                     <field name="create_delete"/>
+<!--                                     <field name="model_id1"/>-->
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_new_model_tree" model="ir.ui.view">
+            <field name="name">new.model</field>
+            <field name="model">new.model</field>
+            <field name="arch" type="xml">
+                <tree>
+<!-- <field name="modules"/>-->
+<field name="model_id1"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="new_model_action_id" model="ir.actions.act_window">
+            <field name="name">New Modules</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">new.model</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+         <menuitem id="menu_module_root"
+              name="Modules"
+              sequence="0"/>
+        <menuitem id="menu_module_master"
+                  name="Module"
+                  parent="menu_module_root"
+                  action="new_model_action_id"
+        />
+    </data>
+
+</odoo>

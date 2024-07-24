@@ -25,3 +25,23 @@ class CustomModuleControllers(http.Controller):
             })
             # return request.redirect('/odoo/login_page')
         return http.request.render("bank.template_form_submit", {})
+
+    from odoo import http
+    from odoo.http import request
+
+    class WebsiteController(http.Controller):
+
+        @http.route('/myhome/submited', type='http', auth="public", website=True,csrf=False)
+        def search_sale_order(self, **durgarao):
+            order_number = durgarao.get('orderNumber')
+            if order_number:
+                SaleOrder = request.env['sale.order']
+                sale_order = SaleOrder.sudo().search([('name', '=', order_number)], limit=1)
+                return request.render('bank.sale_order_template', {
+                    'sale_order': sale_order
+                })
+
+
+            return request.redirect('/')
+
+

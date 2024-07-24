@@ -64,7 +64,7 @@ from odoo import models, fields, api
 class StockMoveNew(models.Model):
     _inherit = 'sale.order'
 
-    custom_name = fields.Char(string="Custom Name")
+    custom_name = fields.Char(string="Custom Name",tracking=True)
     commission = fields.Float(string="Commission", default=0)
     invisible = fields.Char(string='Invisible')
     flag = fields.Boolean(string='Flag', default=False)

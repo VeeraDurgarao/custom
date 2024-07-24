@@ -1,0 +1,197 @@
+<odoo>
+    <data>
+        <template id="product_categories_page">
+            <t t-call="website.layout">
+                <div class="container">
+                    <h1 class="mb-5 fw-bold" style="font-family: 'Arial', sans-serif; font-size: 28px;">
+                        All Product Categories
+                    </h1>
+                    <div class="row">
+                        <t t-foreach="categories" t-as="category">
+                            <div class="col-md-3 mb-3">
+                                <a t-attf-href="/category/#{category.id}">
+                                    <button type="button" class="btn btn-secondary btn-block">
+                                        <t t-esc="category.name"/>
+                                    </button>
+                                </a>
+                            </div>
+                        </t>
+                    </div>
+                </div>
+            </t>
+        </template>
+
+        <template id="category_page_template">
+            <t t-call="website.layout">
+                <div class="container">
+                    <h1 class="mb-5 fw-bold" style="font-family: 'Roboto', sans-serif; font-size: 28px;">Products in
+                        Category:
+                        <t t-esc="category.name"/>
+                    </h1>
+                    <div class="row">
+                        <t t-foreach="products" t-as="product">
+                            <div class="col-md-4 mb-3">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5 class="card-title">
+                                            <t t-esc="product.name"/>
+                                        </h5>
+                                        <div class="card-img-top">
+                                            <t t-if="product.image_1920">
+                                                <img t-att-src="'data:image/png;base64,%s' % product.image_1920.decode('utf-8')"
+                                                     class="img-fluid custom-image-size" alt="Product Image"/>
+                                            </t>
+                                            <t t-else="">
+                                                <img src="/web/image/product.template/#{product.id}/image_1920"
+                                                     class="img-fluid custom-image-size" alt="Product Image"/>
+                                            </t>
+                                        </div>
+                                        <p class="card-text">
+                                            <t t-if="product.default_code">
+                                                [<t t-esc="product.default_code"/>]
+                                            </t>
+                                            <br/>
+                                            Price:
+                                            <t t-esc="product.list_price"/>
+                                        </p>
+                                        <p>On Hand Quantity:
+                                            <span t-esc="product.qty_available"/>
+                                        </p>
+                                        <t t-if="product.qty_available == 0">
+                                            <a role="button" class="btn btn-primary" custom="payment"
+                                               data-bs-toggle="modal"
+                                               data-bs-target="#exampleModalCenter">View Product
+                                            </a>
+                                        </t>
+                                        <t t-else="">
+                                            <a t-attf-href="/product/#{product.id}" class="btn btn-primary">View
+                                                Product
+                                            </a>
+                                        </t>
+                                    </div>
+                                </div>
+                            </div>
+                        </t>
+                    </div>
+
+                    <!--                    popup code-->
+                    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+                         aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                                    <button type="button" class="btn-close" data-dismiss="modal"
+                                            aria-label="Close"></button>
+                                </div>
+                                <div class="alert alert-danger">
+                                    <p>Sorry, the product is currently out of stock or the stock is not sufficient.</p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                                        Close
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </t>
+            <style>
+                .custom-image-size {
+                max-width: 50%;
+                height: auto;
+                max-height: 200px;
+                }
+            </style>
+        </template>
+
+        <template id="product_details">
+            <t t-call="website.layout">
+                <div class="container">
+
+                    <div class="row mt-3">
+                        <div class="col-md-6">
+                            <t t-if="product.image_1920">
+                                <img t-att-src="'data:image/png;base64,%s' % product.image_1920.decode('utf-8')"
+                                     class="img-fluid" alt="Product Image"/>
+                            </t>
+                            <t t-else="">
+                                <img src="/web/image/product.template/#{product.id}/image_1920" class="img-fluid"
+                                     alt="Product Image"/>
+                            </t>
+                        </div>
+                        <div class="col-md-6">
+                            <h1 t-set="additional_title" t-esc="product.name"/>
+                            <p t-field="product.description"/>
+                            <p>Price:
+                                <span t-esc="product.list_price"/>
+                            </p>
+                            <p>On Hand Quantity:
+                                <span t-esc="product.qty_available"/>
+                            </p>
+                            <div class="d-flex">
+                                <div class="d-flex">
+                                    <a href="#" class="btn btn-link js_change_quantity" data-action="remove"
+                                       aria-label="Remove one" title="Remove one">
+                                        <i class="fa fa-minus"></i>
+                                    </a>
+                                    <input type="text" class="form-control quantity text-center" data-min="1"
+                                           name="add_qty" value="1" style="width: 50px;"/>
+                                    <a href="#" class="btn btn-link js_change_quantity" data-action="add"
+                                       aria-label="Add one" title="Add one">
+                                        <i class="fa fa-plus"></i>
+                                    </a>
+                                </div>
+
+
+                                <div class="mt-2">
+                                    <a href="#" role="button" id="add_to_cart" class="btn btn-primary js_add_to_cart">
+                                        <i class="fa fa-shopping-cart me-2"></i>
+                                        Add to cart
+                                    </a>
+                                </div>
+                            </div>
+
+                            <p class="text-muted mb-2 mt-3">
+                                <a href="/terms" class="text-muted">
+                                    <u>Terms and Conditions</u>
+                                </a>
+                                <br/>
+                                30-day money-back guarantee
+                                <br/>
+                                Shipping: 2-3 Business Days
+                            </p>
+                            <div class="h4 mt-3 mb-0 d-flex justify-content-md-end flex-shrink-0"
+                                 contenteditable="false">
+                                <t t-snippet-call="website.s_share">
+                                    <t t-set="_exclude_share_links" t-value="['whatsapp', 'linkedin']"/>
+                                    <t t-set="_no_title" t-value="True"/>
+                                    <t t-set="_classes" t-valuef="text-lg-end"/>
+                                    <t t-set="_link_classes" t-valuef="mx-1 my-0"/>
+                                </t>
+                            </div>
+
+                        </div>
+
+                        <div id="product_option_block" class="d-flex flex-wrap w-100"/>
+
+                    </div>
+                </div>
+            </t>
+        </template>
+
+        <template id="product_out_of_stock_template">
+            <t t-call="website.layout">
+                <t t-name="website_tasks.product_out_of_stock_template">
+                    <div class="alert alert-danger">
+                        <p>Sorry, the product is currently out of stock or the stock is not sufficient.</p>
+                    </div>
+                </t>
+            </t>
+        </template>
+
+
+    </data>
+</odoo>

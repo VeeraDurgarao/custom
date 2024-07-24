@@ -1,0 +1,50 @@
+<odoo>
+    <template id="basic_snippets" name="Odoo Image" >
+       <section class="container">
+           <div class="row">
+               <div class="col-md-12">
+                    <img src="/bank/static/src/img/download.png" style="height:70%;" alt="Image"/>
+               </div>
+           </div>
+       </section>
+    </template>
+
+    <template id="external_snippets_one" inherit_id="website.snippets" priority="8">
+  <xpath expr="//div[@id='snippet_structure']/div[@class='o_panel_body']" position="inside">
+           <t t-snippet="bank.basic_snippets" t-thumbnail="/bank/static/src/img/download.png"/>
+   </xpath>
+</template>
+
+       <template id="basic_snippets_one" name="Custom snippet two">
+       <section class="container">
+           <div class="row">
+               <div class="col-md-12">
+                   <h1>Durgarao</h1>
+               </div>
+           </div>
+       </section>
+    </template>
+
+    <template id="external_snippets_two" inherit_id="website.snippets" priority="8">
+  <xpath expr="//div[@id='snippet_structure']/div[@class='o_panel_body']" position="inside">
+           <t t-snippet="bank.basic_snippets_one"/>
+   </xpath>
+</template>
+
+       <template id="basic_snippets_two" name="Custom Name">
+       <section class="container">
+           <div class="row">
+               <div class="col-md-12">
+                    <h1>Durgarao Goriparthi</h1>
+               </div>
+           </div>
+       </section>
+    </template>
+
+    <template id="external_snippets_three" inherit_id="website.snippets" priority="8">
+  <xpath expr="//div[@id='snippet_structure']/div[@class='o_panel_body']" position="inside">
+           <t t-snippet="bank.basic_snippets_two"/>
+   </xpath>
+</template>
+
+</odoo>

@@ -1,7 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?>
-<odoo>
-    <template id="temporary_data" name="Sale Details">
-        <t t-call="website.layout">
+<!--<?xml version="1.0" encoding="utf-8"?>-->
+<!--<odoo>-->
+<!--    <template id="temporary_data" name="Sale Details">-->
+<!--        <t t-call="website.layout">-->
 <!--             <div id="wrap">-->
 <!--                <div class="container">-->
 <!--                    <div class="col-md-12">-->
@@ -62,46 +62,46 @@
 <!--                    </div>-->
 <!--                </div>-->
 <!--            </div>-->
-            <div class="oe_structure">
-                <div class="container">
-                    <br/>
-                    <center>
-                        <h3>Sale Management</h3>
-                    </center>
-                    <br/>
-                    <table style="font-family: arial, sans-serif;width: 100%;">
-                        <thead>
-                            <tr>
-                                <h6>
-                                    <b>
-                                        <th style="text-align: left;padding: 8px;">Customer Name</th>
-                                        <th style="text-align: left;padding: 8px;">Sequence Number</th>
-                                        <th style="text-align: left;padding: 8px;">Sale Person</th>
-                                        <th style="text-align: left;padding: 8px;">Total amount</th>
-                                    </b>
-                                </h6>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <t t-foreach="records" t-as="o">
-                                <tr>
-                                    <td style="text-align: left;padding: 8px;">
-                                        <a t-attf-href="#{ o.id }">
-                                            <span t-esc="o.partner_id.name"/>
-                                        </a>
-                                    </td>
-                                    <td style="text-align: left;padding: 8px;">
-                                        <span t-esc="o.name"/>
-                                    </td>
-                                    <td style="text-align: left;padding: 8px;">
-                                        <span t-esc="o.user_id.name"/>
-                                    </td>
-                                    <td style="text-align: left;padding: 8px;">
-                                        <span t-esc="o.amount_total"/>
-                                    </td>
-                                </tr>
-                            </t>
-                        </tbody>
+<!--            <div class="oe_structure">-->
+<!--                <div class="container">-->
+<!--                    <br/>-->
+<!--                    <center>-->
+<!--                        <h3>Sale Management</h3>-->
+<!--                    </center>-->
+<!--                    <br/>-->
+<!--                    <table style="font-family: arial, sans-serif;width: 100%;">-->
+<!--                        <thead>-->
+<!--                            <tr>-->
+<!--                                <h6>-->
+<!--                                    <b>-->
+<!--                                        <th style="text-align: left;padding: 8px;">Customer Name</th>-->
+<!--                                        <th style="text-align: left;padding: 8px;">Sequence Number</th>-->
+<!--                                        <th style="text-align: left;padding: 8px;">Sale Person</th>-->
+<!--                                        <th style="text-align: left;padding: 8px;">Total amount</th>-->
+<!--                                    </b>-->
+<!--                                </h6>-->
+<!--                            </tr>-->
+<!--                        </thead>-->
+<!--                        <tbody>-->
+<!--                            <t t-foreach="records" t-as="o">-->
+<!--                                <tr>-->
+<!--                                    <td style="text-align: left;padding: 8px;">-->
+<!--                                        <a t-attf-href="#{ o.id }">-->
+<!--                                            <span t-esc="o.partner_id.name"/>-->
+<!--                                        </a>-->
+<!--                                    </td>-->
+<!--                                    <td style="text-align: left;padding: 8px;">-->
+<!--                                        <span t-esc="o.name"/>-->
+<!--                                    </td>-->
+<!--                                    <td style="text-align: left;padding: 8px;">-->
+<!--                                        <span t-esc="o.user_id.name"/>-->
+<!--                                    </td>-->
+<!--                                    <td style="text-align: left;padding: 8px;">-->
+<!--                                        <span t-esc="o.amount_total"/>-->
+<!--                                    </td>-->
+<!--                                </tr>-->
+<!--                            </t>-->
+<!--                        </tbody>-->
 <!--                                    <td>-->
 <!--                                        <a t-attf-href="/market/form/edit/#{o.id}">-->
 <!--                                            <button type="submit" class="btn btn-outline-success"><i class="fa fa-edit"></i>Edit-->
@@ -183,12 +183,12 @@
 
 <!--                            </t>-->
 <!--                        </tbody>-->
-                    </table>
-                    <a href="/market/form/create">
-                        <button type="submit" class="btn btn-primary">Submit</button>
-                    </a>
-                </div>
-            </div>
-        </t>
-    </template>
-</odoo>
+<!--                    </table>-->
+<!--                    <a href="/market/form/create">-->
+<!--                        <button type="submit" class="btn btn-primary">Submit</button>-->
+<!--                    </a>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </t>-->
+<!--    </template>-->
+<!--</odoo>-->

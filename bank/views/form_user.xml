@@ -4,6 +4,41 @@
         <t t-call="website.layout">
             <div class="container">
                 <h2 class="text-center">Home Page</h2>
+                <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"/>
+                <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+                <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+                <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+                <div class="container">
+                    <form class="my-3 mx-1" action="/myhome/submited" method="post">
+                        <a role="button" class="btn btn-secondary flex-grow-1 mb-1 createButton" data-toggle="modal"
+                           data-target="#warrantypopup" href="#">Search</a>
+                        <div class="modal fade" id="warrantypopup" tabindex="-1" aria-labelledby="warrantypopupLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="warrantypopupLabel">Search Sale Order</h5>
+                                        <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form id="searchOrderForm" action="/myhome/submited" method="post">
+                                            <div class="mb-3">
+                                                <label for="orderNumber" class="form-label">Order Number</label>
+                                                <input type="text" class="form-control" id="orderNumber" name="orderNumber"/>
+                                            </div>
+                                            <button type="submit" class="btn btn-primary">Search</button>
+                                        </form>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <br/>
                 <div>
                     <img src="/bank/static/src/img/download.png" style="height:70%;" alt="Image"/>
                     <br/>
@@ -43,6 +78,7 @@
                 </table>
                 <br/>
                 <hr/>
+
                 <h3>Login Form</h3>
                 <form method="post" action="/odoo/form_submit" class="login-form">
                     <div class="form-group">
@@ -65,8 +101,55 @@
             <div class="alert alert-success">
                 <h2>ThankYou</h2>
             </div>
-
         </t>
     </template>
-
+    <template id="sale_order_template">
+        <t t-call="website.layout">
+            <div class="container">
+                <h2 class="text-center">Sale Order Details</h2>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Tax</th>
+                            <th>Total Amount</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr t-foreach="sale_order" t-as="order">
+                            <td><t t-esc="order.name"/></td>
+                            <td><t t-esc="order.partner_id.name"/></td>
+                            <td><t t-esc="order.amount_tax"/></td>
+                            <td><t t-esc="order.amount_total"/></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </t>
+    </template>
 </odoo>
+
+
+<!--<template>-->
+<!--    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"-->
+<!--                     aria-labelledby="exampleModalCenterTitle" aria-hidden="true">-->
+<!--                    <div class="modal-dialog modal-dialog-centered" role="document">-->
+<!--                        <div class="modal-content">-->
+<!--                            <div class="modal-header">-->
+<!--                                <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>-->
+<!--                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">-->
+<!--                                    <span aria-hidden="true">&#215;</span>-->
+<!--                                </button>-->
+<!--                            </div>-->
+<!--                            <div class="modal-body">-->
+<!--                                ...-->
+<!--                            </div>-->
+<!--                            <div class="modal-footer">-->
+<!--                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>-->
+<!--                                <button type="button" class="btn btn-primary">Save changes</button>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--    </div>-->
+<!--</template>-->
