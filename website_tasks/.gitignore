@@ -1,0 +1,6 @@
+# Custom directory
+website_tasks/
+
+# Custom file
+models
+__manifest__.py

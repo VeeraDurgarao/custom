@@ -147,6 +147,8 @@
                                         <i class="fa fa-plus"></i>
                                     </a>
                                 </div>
+
+
                                 <div class="mt-2">
                                     <a href="#" role="button" id="add_to_cart" class="btn btn-primary js_add_to_cart">
                                         <i class="fa fa-shopping-cart me-2"></i>
@@ -154,6 +156,7 @@
                                     </a>
                                 </div>
                             </div>
+
                             <p class="text-muted mb-2 mt-3">
                                 <a href="/terms" class="text-muted">
                                     <u>Terms and Conditions</u>
@@ -172,12 +175,27 @@
                                     <t t-set="_link_classes" t-valuef="mx-1 my-0"/>
                                 </t>
                             </div>
+
                         </div>
+
                         <div id="product_option_block" class="d-flex flex-wrap w-100"/>
+
                     </div>
                 </div>
             </t>
         </template>
+
+        <template id="product_out_of_stock_template">
+<!--            This template is optional for creating practice-->
+            <t t-call="website.layout">
+                <t t-name="website_tasks.product_out_of_stock_template">
+                    <div class="alert alert-danger">
+                        <p>Sorry, the product is currently out of stock or the stock is not sufficient.</p>
+                    </div>
+                </t>
+            </t>
+        </template>
+
 
     </data>
 </odoo>
