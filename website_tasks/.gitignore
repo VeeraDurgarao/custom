@@ -2,5 +2,12 @@
 website_tasks/
 
 # Custom file
-models
+models/
 __manifest__.py
+
+# Python bytecode
+*.py[co]
+__pycache__/
+
+static/
+src/
